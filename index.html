@@ -1,0 +1,586 @@
+<meta name="description" content="Готовы ли вы перейти в другую ветку реальности? 16 честных вопросов — 3-4 минуты.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ирина">
+<meta property="og:title" content="Готовы ли вы перейти в другую ветку реальности?">
+<meta property="og:description" content="16 честных вопросов — 3-4 минуты. Отвечайте так, как есть, а не так, как «правильно».">
+<meta name="twitter:card" content="summary">
+<title>Ветка реальности</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+/* Страховка на случай, если основной скрипт упадёт или Телеграм не ответит.
+   Работает независимо от остального — чистый ES5, без ожиданий. */
+(function () {
+  var shown = false;
+  function fallback(msg) {
+    if (shown) return;
+    shown = true;
+    var box = document.querySelector(".frame") || document.body;
+    if (!box) return;
+    box.innerHTML =
+      '<div style="padding:1.6rem 1.4rem;font:16px/1.55 system-ui,-apple-system,sans-serif;color:#241A30;">' +
+      '<p style="margin:0 0 .9rem;font-size:1.15rem;font-weight:600;">Тест не открылся с первого раза</p>' +
+      '<p style="margin:0 0 .9rem;color:#6B5C7C;">Так бывает: оборвалась связь или страница не догрузилась. Нажмите «Открыть заново» — обычно этого хватает.</p>' +
+      '<p style="margin:0;"><button onclick="location.reload()" style="font:inherit;padding:.7rem 1.1rem;color:#fff;background:#6E2FA0;border:0;border-radius:10px;cursor:pointer;">Открыть заново</button></p>' +
+      '</div>';
+  }
+  window.__fallback = fallback;
+  window.addEventListener("error", function (e) {
+    fallback(e && e.message ? e.message : "неизвестная ошибка");
+  });
+  setTimeout(function () {
+    var f = document.querySelector(".frame");
+    if (f && !f.dataset.booted) fallback("пустой экран");
+  }, 7000);
+
+  /* Телеграм грузится фоном. Ждём его не дольше TG_WAIT: доехал раньше —
+     стартуем сразу, не доехал — стартуем без него (тест просто работает
+     как в обычном браузере). */
+  var TG_WAIT = 3000;
+  var tgSettled = false, appStart = null, launched = false;
+
+  function launch() {
+    if (launched || !tgSettled || !appStart) return;
+    launched = true;
+    appStart();
+  }
+  function lateInit() {
+    var tg = window.Telegram && window.Telegram.WebApp;
+    if (!tg) return;
+    try {
+      tg.ready();
+      tg.expand();
+      if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+    } catch (e) {}
+  }
+  window.__tgSettled = function () {
+    if (tgSettled) return;
+    tgSettled = true;
+    if (launched) lateInit(); else launch();
+  };
+  window.__appStart = function (fn) { appStart = fn; launch(); };
+  setTimeout(window.__tgSettled, TG_WAIT);
+})();
+</script>
+<script async src="https://telegram.org/js/telegram-web-app.js"
+        onload="window.__tgSettled && window.__tgSettled()"
+        onerror="window.__tgSettled && window.__tgSettled()"></script>
+
+<style>
+  :root{
+    --bg:#FBF7FB;
+    --surface:#FFFFFF;
+    --surface-2:#F3EAF7;
+    --ink:#241A30;
+    --ink-soft:#6B5C7C;
+    --ink-faint:#9C8CB2;
+    --accent:#6E2FA0;
+    --accent-ink:#FFFFFF;
+    --accent-soft:#EFE1F9;
+    --rose:#B8577A;
+    --line:#E4D7ED;
+    --shadow:0 20px 40px -24px rgba(110,47,160,.28);
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#15101F;
+      --surface:#1E1730;
+      --surface-2:#291F3F;
+      --ink:#F3EAFB;
+      --ink-soft:#BBA8D2;
+      --ink-faint:#7E6C97;
+      --accent:#B084E3;
+      --accent-ink:#1B1129;
+      --accent-soft:#332750;
+      --rose:#E08CA8;
+      --line:#392C4F;
+      --shadow:0 20px 40px -24px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15101F;
+    --surface:#1E1730;
+    --surface-2:#291F3F;
+    --ink:#F3EAFB;
+    --ink-soft:#BBA8D2;
+    --ink-faint:#7E6C97;
+    --accent:#B084E3;
+    --accent-ink:#1B1129;
+    --accent-soft:#332750;
+    --rose:#E08CA8;
+    --line:#392C4F;
+    --shadow:0 20px 40px -24px rgba(0,0,0,.55);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:40px 16px 64px;
+  }
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif; text-wrap:balance; margin:0;}
+  ::selection{background:var(--accent-soft);}
+
+  .backdrop{
+    position:fixed; inset:0; z-index:-1; overflow:hidden;
+  }
+  .backdrop svg{position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(1100px,140vw); opacity:.5;}
+  .backdrop path{stroke:var(--line); stroke-width:1.4; fill:none;}
+  .backdrop circle{fill:var(--line);}
+
+  .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+
+  .frame{
+    width:100%; max-width:440px;
+    background:var(--surface);
+    border-radius:28px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+    overflow:hidden;
+    position:relative;
+  }
+  .frame-top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 22px 14px;
+  }
+  .brand{display:flex; align-items:center; gap:9px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .brand span{font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);}
+  .step-label{font-size:12px; color:var(--ink-faint); font-variant-numeric:tabular-nums;}
+
+  .branch-track{
+    display:flex; gap:4px; padding:0 22px 18px; align-items:center;
+  }
+  .branch-track .seg{
+    height:3px; flex:1; border-radius:3px; background:var(--line); position:relative; overflow:hidden;
+  }
+  .branch-track .seg.done{background:var(--accent);}
+  .branch-track .seg.current::after{
+    content:""; position:absolute; inset:0; background:var(--accent); opacity:.45;
+  }
+
+  .screen{
+    padding:6px 26px 30px;
+    display:none;
+    animation:rise .38s ease both;
+  }
+  .screen.active{display:block;}
+  @keyframes rise{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .kicker{color:var(--accent); font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px;}
+  .headline{font-size:26px; line-height:1.18; font-weight:600; margin-bottom:14px;}
+  .lede{color:var(--ink-soft); font-size:15px; line-height:1.6; margin-bottom:22px;}
+
+  .q-title{font-size:19px; font-weight:600; line-height:1.4; font-family:"Fraunces",serif; margin-bottom:18px;}
+  .options{display:flex; flex-direction:column; gap:10px;}
+  .opt{
+    text-align:left; border:1.5px solid var(--line); background:var(--surface);
+    color:var(--ink); border-radius:14px; padding:14px 16px; font-size:14.5px; font-family:inherit;
+    cursor:pointer; transition:.15s border-color, .15s background, .15s transform;
+    line-height:1.45;
+  }
+  .opt:hover{border-color:var(--accent); background:var(--accent-soft);}
+  .opt:active{transform:scale(.99);}
+  .opt.picked{border-color:var(--accent); background:var(--accent-soft); font-weight:600;}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; border:none; border-radius:14px; padding:15px 18px;
+    background:var(--accent); color:var(--accent-ink); font-family:"Manrope",sans-serif;
+    font-weight:700; font-size:15px; cursor:pointer; transition:.15s opacity, .15s transform;
+  }
+  .btn:hover{opacity:.92;}
+  .btn:active{transform:scale(.98);}
+  .btn.ghost{
+    background:transparent; color:var(--ink-soft); border:1.5px solid var(--line); font-weight:600;
+  }
+  .btn.ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  .result-card{
+    background:var(--surface-2); border-radius:18px; padding:24px 22px; margin-bottom:20px;
+  }
+  .result-title{font-family:"Fraunces",serif; font-size:27px; font-weight:600; color:var(--accent); margin:6px 0 14px; text-wrap:balance;}
+
+  .stage{
+    display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--line);
+  }
+  .stage:last-child{border-bottom:none;}
+  .stage-num{
+    flex:none; width:30px; height:30px; border-radius:50%; background:var(--accent-soft); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; font-family:"Fraunces",serif;
+  }
+  .stage-name{font-weight:700; font-size:14.5px; margin-bottom:3px;}
+  .stage-q{color:var(--ink-soft); font-size:13.5px; line-height:1.5; font-style:italic;}
+
+  .perk{display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; font-size:14px; color:var(--ink-soft); line-height:1.5;}
+  .perk .mark{color:var(--rose); font-size:15px; line-height:1.5;}
+
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;}
+  .field input, .field textarea{
+    width:100%; border:1.5px solid var(--line); border-radius:12px; padding:12px 14px;
+    font-family:inherit; font-size:14.5px; background:var(--bg); color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);}
+  .field textarea{resize:vertical; min-height:64px;}
+
+  .foot-note{font-size:12.5px; color:var(--ink-faint); line-height:1.6; margin-top:16px; text-align:center;}
+  .consent{display:flex; gap:10px; align-items:flex-start; margin-bottom:20px; cursor:pointer;}
+  .consent input{margin-top:3px; flex:none; width:16px; height:16px; accent-color:var(--accent);}
+  .consent span{font-size:13px; line-height:1.55; color:var(--ink-soft);}
+  .consent a{color:var(--accent);}
+  .btn:disabled{opacity:.45; cursor:not-allowed;}
+  .disclaimer{font-size:12.5px; color:var(--ink-faint); font-style:italic; line-height:1.6; margin-top:14px;}
+
+  .check-icon{
+    width:56px; height:56px; border-radius:50%; background:var(--accent-soft); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; margin:8px auto 20px; font-size:26px;
+  }
+  .center{text-align:center;}
+
+  .restart-link{
+    display:block; text-align:center; font-size:13px; color:var(--ink-faint); margin-top:16px;
+    background:none; border:none; cursor:pointer; font-family:inherit; text-decoration:underline; text-underline-offset:3px;
+  }
+  .restart-link:hover{color:var(--accent);}
+
+  @media (prefers-reduced-motion: reduce){
+    .screen{animation:none;}
+  }
+</style>
+
+<div class="backdrop" aria-hidden="true">
+  <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMin slice">
+    <path d="M400 0 C400 120 340 140 340 260 C340 360 260 380 260 480 C260 580 200 600 200 720"/>
+    <path d="M400 0 C400 120 460 140 460 260 C460 360 540 380 540 480 C540 580 600 600 600 720"/>
+    <path d="M400 0 C400 90 400 120 400 220 C400 320 400 340 400 460"/>
+    <circle cx="200" cy="720" r="4"/>
+    <circle cx="600" cy="720" r="4"/>
+    <circle cx="400" cy="460" r="4"/>
+    <circle cx="400" cy="0" r="4.5"/>
+  </svg>
+</div>
+
+<div class="frame" role="application" aria-label="Тест «Ветка реальности»">
+  <div class="frame-top">
+    <div class="brand"><span class="dot"></span><span>Ирина · тест</span></div>
+    <div class="step-label" id="stepLabel"></div>
+  </div>
+  <div class="branch-track" id="track"></div>
+
+  <!-- 0: intro -->
+  <section class="screen active" data-screen="0">
+    <div class="kicker">Ветка реальности</div>
+    <h1 class="headline">Готовы ли вы перейти в другую ветку реальности?</h1>
+    <p class="lede">Вы всё понимаете, всё про себя знаете — но в жизни ничего не меняется? 16 честных вопросов помогут ответить себе на этот вопрос за 3–4 минуты.</p>
+    <p class="lede" style="margin-top:-10px;">Отвечайте так, как есть на самом деле, а не так, как «правильно».</p>
+    <button class="btn" id="startBtn">Начать тест</button>
+  </section>
+
+  <!-- 1..16: questions injected by JS -->
+  <section class="screen" data-screen="questions" id="qScreen">
+    <div class="q-title" id="qTitle"></div>
+    <div class="options" id="qOptions"></div>
+  </section>
+
+  <!-- result -->
+  <section class="screen" data-screen="result">
+    <div class="eyebrow" style="margin-bottom:8px;">Ваш ответ</div>
+    <div class="result-card">
+      <div class="result-title">Новая ветка реальности уже рядом</div>
+      <p style="margin:0 0 12px; line-height:1.6; font-size:14.5px; color:var(--ink-soft);">Вы дошли до конца теста и отвечали честно — а это уже говорит о многом.</p>
+      <p style="margin:0 0 12px; line-height:1.6; font-size:14.5px; color:var(--ink-soft);">Дело не в силе воли и не в том, что вы недостаточно стараетесь. Мозг всегда сопротивляется новому — потому что ему страшно: страшно, что не получится, что не справитесь, что осудят. И весь этот «анализ» он строит на чужом опыте, который к вам никакого отношения не имеет.</p>
+      <p style="margin:0; line-height:1.6; font-size:14.5px; color:var(--ink-soft);">Хорошая новость: это всего лишь привычка мышления. А привычку можно поменять.</p>
+    </div>
+    <p style="margin:14px 0 0; line-height:1.6; font-size:14.5px; color:var(--ink-soft);">Менять привычку мышления можно через осознание, фокус внимания и практику перехода в другую ветку реальности — она уже покажет вам будущую версию себя и план, с которого можно начать сегодня. А по-настоящему устойчивый переход происходит рядом с тем, кто уже прошёл этот путь.</p>
+    <p class="disclaimer">Это не диагноз и не гороскоп. Это способ честно посмотреть на себя и увидеть, что вы уже готовы к переменам.</p>
+    <button class="btn" id="toProgramBtn" style="margin-top:18px;">Я готова меняться и сделать первый шаг</button>
+  </section>
+
+  <!-- program -->
+  <section class="screen" data-screen="program">
+    <div class="kicker">Программа Ирины</div>
+    <h2 class="headline" style="font-size:23px;">ПЕРЕХОД: НОВОЕ СОЗНАНИЕ</h2>
+    <p class="lede">Старт 21 сентября. Семь ступеней, которые шаг за шагом переводят вас в другую ветку реальности — с практикой и живой поддержкой наставника, за месяц, с любой точки, с которой вы начинаете.</p>
+    <div id="stages"></div>
+    <h3 style="font-size:15px; margin:20px 0 12px;">Что вас ждёт в закрытом канале — уже сейчас</h3>
+    <div class="perk"><span class="mark">✦</span><span>Живые эфиры с Ириной — не запись, а прямой разговор</span></div>
+    <div class="perk"><span class="mark">✦</span><span>Практики, которых нет нигде в открытом доступе — ни в блоге, ни в открытых каналах</span></div>
+    <div class="perk"><span class="mark">✦</span><span>Личные ответы на ваши вопросы от самой Ирины — не от бота</span></div>
+    <div class="perk"><span class="mark">✦</span><span>Практику перехода и видео к ней — сразу, закреплённым сообщением</span></div>
+    <p class="lede" style="margin-top:16px;">Там я подробно раскрываю программу и называю форматы участия — здесь на экране цифр нет.</p>
+    <button class="btn" id="toFormBtn">Вступить в закрытый канал</button>
+  </section>
+
+  <!-- form -->
+  <section class="screen" data-screen="form">
+    <div class="kicker">Последний шаг</div>
+    <h2 class="headline" style="font-size:22px;">Оставьте контакт — и откройте канал</h2>
+    <div class="field">
+      <label for="fName">Как вас зовут?</label>
+      <input id="fName" type="text" placeholder="Ваше имя" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="fTg">Ваш телеграм-ник</label>
+      <input id="fTg" type="text" placeholder="@username" autocomplete="off">
+    </div>
+    <label class="consent">
+      <input type="checkbox" id="consentData">
+      <span>Я даю <a href="#" target="_blank" rel="noopener">согласие</a> на обработку моих персональных данных и ознакомлен(а) с <a href="#" target="_blank" rel="noopener">Политикой конфиденциальности</a>.</span>
+    </label>
+    <button class="btn" id="submitBtn" disabled>Войти в закрытый канал</button>
+  </section>
+
+  <!-- thanks -->
+  <section class="screen" data-screen="thanks">
+    <div class="center">
+      <div class="check-icon">✓</div>
+      <h2 class="headline" style="font-size:22px;">Готово. Добро пожаловать в закрытый канал.</h2>
+      <p class="lede" style="margin-top:12px;">Практика перехода и видео к ней уже ждут вас там, в закреплённом сообщении.</p>
+      <a class="btn" style="margin-top:10px; text-decoration:none;" id="channelLink" href="#" target="_blank" rel="noopener">Перейти в закрытый канал</a>
+    </div>
+    <button class="restart-link" id="restartBtn">Пройти тест заново</button>
+  </section>
+</div>
+
+<script>
+window.__appStart(function(){
+  document.querySelector(".frame").dataset.booted = "1";
+
+  var CONFIG = {
+    sheetUrl: "https://script.google.com/macros/s/AKfycbwZNJxbmarbbimY87ydj2x7skVhUzYzqEWvVVOayOgqK8VfXeIUbkqqZsJRnyqN5cWu9g/exec",
+    channelUrl: "https://t.me/+OPZfD7YMoZM3MzA6"
+  };
+
+  var questions = [
+    { q:"Когда вы слышите про людей, которые совершили резкую перемену в жизни — переехали, ушли с работы, начали всё заново — что вы чувствуете?",
+      a:["Это не про меня, я бы так не смогла","Я бы хотела, но пока страшно","Я давно думаю о похожем шаге, но не решаюсь","Я уже делаю первые шаги в эту сторону"]},
+    { q:"Сколько времени вы уже терпите то, что вас не устраивает — работу, отношения, привычный уклад?",
+      a:["Пока не задумывалась об этом всерьёз","Несколько месяцев — но ещё жду, что само наладится","Больше года — и я устала ждать","Достаточно, чтобы понять: пора действовать самой"]},
+    { q:"Знакомо ли вам ощущение «я всё понимаю, но в жизни ничего не меняется»?",
+      a:["Не очень, у меня скорее наоборот — не хватает понимания","Иногда бывает, но не критично","Да, и это уже начинает раздражать","Да, и я готова с этим что-то сделать прямо сейчас"]},
+    { q:"Что вы обычно делаете, когда внутри появляется идея или желание что-то изменить?",
+      a:["Откладываю — не подходящее время","Обдумываю со всех сторон, ищу гарантии","Делюсь с близкими, ищу поддержки","Пробую делать хоть маленький шаг сразу"]},
+    { q:"Как вы относитесь к мысли, что можно измениться быстро — не за годы, а за недели?",
+      a:["Не верю, так не бывает","Звучит заманчиво, но сомневаюсь","Хочу в это поверить и проверить на себе","У меня уже были похожие быстрые перемены — знаю, что это возможно"]},
+    { q:"Что происходит, когда близкие не поддерживают ваши перемены?",
+      a:["Отказываюсь от своих планов","Сомневаюсь в себе, откладываю","Расстраиваюсь, но иду дальше не так уверенно","Иду своим путём, чужое мнение не сбивает меня"]},
+    { q:"Что вы чувствуете, когда представляете свою будущую версию — счастливую, реализованную, свободную?",
+      a:["Мне сложно её представить","Вижу образ, но не верю, что это про меня","Вижу и очень хочу к ней прийти","Уже чувствую, что двигаюсь в её сторону"]},
+    { q:"Как вы относитесь к своим желаниям и тратам на себя?",
+      a:["Сначала подумаю о других, потом о себе","Очень трудно тратить на себя","Учусь разрешать себе хотеть","Разрешаю себе хотеть и получать"]},
+    { q:"Что происходит, когда вы совершаете ошибку или что-то не получается с первого раза?",
+      a:["Виню себя и откатываюсь назад","Долго переживаю, прежде чем пробовать снова","Расстраиваюсь, но пробую ещё раз","Воспринимаю как часть пути и иду дальше"]},
+    { q:"Насколько вы готовы довериться человеку, который уже прошёл путь, куда вы хотите прийти?",
+      a:["Мне сложно доверять кому-то в таких вопросах","Готова присмотреться, но не сразу","Готова, если увижу, что это действительно работает","Готова прямо сейчас — устала справляться в одиночку"]},
+    { q:"Как часто вы делаете что-то спонтанное, что раньше никогда не делали?",
+      a:["Почти никогда, я привыкла к своему укладу","Иногда, но редко","Периодически позволяю себе такое","Часто — и мне это нравится"]},
+    { q:"Насколько вы готовы взять ответственность за свою реальность на себя, а не ждать, что что-то изменится само?",
+      a:["Мне проще, когда обстоятельства решают за меня","Понимаю умом, но пока не действую так","Уже начинаю брать ответственность на себя","Полностью готова — и хочу двигаться дальше уже сейчас"]},
+    { q:"Как вы относитесь к своему телу и заботе о себе?",
+      a:["Забота о себе часто откладывается на потом","Стараюсь, но получается непостоянно","Уделяю этому внимание, но хочу больше","Тело и состояние — то, с чем я в контакте"]},
+    { q:"Что для вас сейчас важнее — понять теорию до конца или начать действовать?",
+      a:["Хочу сначала во всём разобраться","И то, и другое, но пока перевешивает теория","Готова начать, если будут понятные шаги","Хочу начать действовать прямо сейчас"]},
+    { q:"Закончите мысленно фразу: «Я хочу, чтобы моя жизнь через год была...»",
+      a:["Такой же, как сейчас, — и это меня устраивает","Немного лучше, но я не загадываю","Совсем другой — и я уже думаю, как к этому прийти","Совсем другой — и я уже иду к этому"]},
+    { q:"Если бы переход в другую ветку реальности начинался прямо сегодня, с одного маленького шага — вы бы его сделали?",
+      a:["Не уверена, что готова","Хотела бы, но нужен понятный первый шаг","Да, если буду знать, что делать дальше","Да, готова начать прямо сейчас"]}
+  ];
+
+  var stages = [
+    ["Пробуждение сознания","Почему мозг сопротивляется переменам — и как его успокоить?"],
+    ["Любовь к себе","Как перестать жить по чужим сценариям и начать доверять себе?"],
+    ["Тело не расходный материал","Как вернуть контакт со своим телом и своей энергией?"],
+    ["Нейропрограммирование новой реальности","Как осознанно выбрать свою ветку реальности?"],
+    ["Я есть: творец и создатель своей реальности","Как мысль и нелогичные действия меняют события?"],
+    ["Денежная энергия","Что мешает деньгам приходить — и как это изменить?"],
+    ["Сценарий жизни","Кто пишет ваш сценарий: вы или кто-то за вас?"]
+  ];
+
+  var stagesEl = document.getElementById("stages");
+  stages.forEach(function(s, i){
+    var el = document.createElement("div");
+    el.className = "stage";
+    el.innerHTML = '<div class="stage-num">'+(i+1)+'</div><div><div class="stage-name">'+s[0]+'</div><div class="stage-q">'+s[1]+'</div></div>';
+    stagesEl.appendChild(el);
+  });
+
+  var trackEl = document.getElementById("track");
+  questions.forEach(function(_, i){
+    var seg = document.createElement("div");
+    seg.className = "seg";
+    seg.dataset.i = i;
+    trackEl.appendChild(seg);
+  });
+
+  var current = 0; // question index
+  var screens = {
+    intro: document.querySelector('[data-screen="0"]'),
+    q: document.getElementById("qScreen"),
+    result: document.querySelector('[data-screen="result"]'),
+    program: document.querySelector('[data-screen="program"]'),
+    form: document.querySelector('[data-screen="form"]'),
+    thanks: document.querySelector('[data-screen="thanks"]')
+  };
+  var stepLabel = document.getElementById("stepLabel");
+
+  function showOnly(el){
+    Object.keys(screens).forEach(function(k){ screens[k].classList.remove("active"); });
+    el.classList.add("active");
+  }
+
+  function renderTrack(){
+    var segs = trackEl.querySelectorAll(".seg");
+    segs.forEach(function(seg, i){
+      seg.classList.toggle("done", i < current);
+      seg.classList.toggle("current", i === current);
+    });
+  }
+
+  function renderQuestion(){
+    trackEl.style.display = "flex";
+    stepLabel.textContent = "Вопрос " + (current+1) + " из " + questions.length;
+    renderTrack();
+    var item = questions[current];
+    document.getElementById("qTitle").textContent = item.q;
+    var opts = document.getElementById("qOptions");
+    opts.innerHTML = "";
+    item.a.forEach(function(text){
+      var b = document.createElement("button");
+      b.className = "opt";
+      b.type = "button";
+      b.textContent = text;
+      b.addEventListener("click", function(){
+        opts.querySelectorAll(".opt").forEach(function(o){ o.classList.remove("picked"); });
+        b.classList.add("picked");
+        setTimeout(function(){
+          if (current < questions.length - 1){
+            current++;
+            renderQuestion();
+          } else {
+            trackEl.style.display = "none";
+            stepLabel.textContent = "";
+            showOnly(screens.result);
+          }
+        }, 260);
+      });
+      opts.appendChild(b);
+    });
+    showOnly(screens.q);
+  }
+
+  document.getElementById("startBtn").addEventListener("click", function(){
+    current = 0;
+    renderQuestion();
+  });
+  document.getElementById("toProgramBtn").addEventListener("click", function(){
+    showOnly(screens.program);
+  });
+  document.getElementById("toFormBtn").addEventListener("click", function(){
+    showOnly(screens.form);
+  });
+  var consentBox = document.getElementById("consentData");
+  var submitBtn = document.getElementById("submitBtn");
+  var channelLink = document.getElementById("channelLink");
+  channelLink.href = CONFIG.channelUrl;
+
+  consentBox.addEventListener("change", function(){
+    submitBtn.disabled = !consentBox.checked;
+  });
+
+  /* ——— отправка заявки, устойчивая к обрывам связи ———
+     Кладём в буфер (localStorage) и пробуем отправить. Не дошло — полежит
+     и уйдёт при следующем открытии страницы, а не потеряется молча. */
+  var BUFFER_KEY = "vetka-pending";
+  var inFlight = {};
+
+  function bufferPush(item){
+    try{
+      var all = JSON.parse(localStorage.getItem(BUFFER_KEY) || "[]");
+      all.push(item);
+      localStorage.setItem(BUFFER_KEY, JSON.stringify(all));
+    }catch(e){}
+  }
+  function bufferRemove(item){
+    try{
+      var key = JSON.stringify(item);
+      var all = JSON.parse(localStorage.getItem(BUFFER_KEY) || "[]");
+      var i = all.findIndex(function(x){ return JSON.stringify(x) === key; });
+      if (i !== -1){ all.splice(i,1); localStorage.setItem(BUFFER_KEY, JSON.stringify(all)); }
+    }catch(e){}
+  }
+  function sendOne_(item){
+    var params = new URLSearchParams(item);
+    return fetch(CONFIG.sheetUrl + "?" + params.toString(), { method: "GET", mode: "no-cors" });
+  }
+  function flush(){
+    if (!CONFIG.sheetUrl) return;
+    var all = [];
+    try{ all = JSON.parse(localStorage.getItem(BUFFER_KEY) || "[]"); }catch(e){ return; }
+    all.forEach(function(item){
+      var key = JSON.stringify(item);
+      if (inFlight[key]) return;
+      inFlight[key] = true;
+      sendOne_(item)
+        .then(function(){ bufferRemove(item); })
+        .catch(function(){ /* останется в буфере до следующего раза */ })
+        .then(function(){ delete inFlight[key]; });
+    });
+  }
+  function queueLead(item){ bufferPush(item); flush(); }
+  flush(); // подчистить то, что не дошло в прошлый визит
+
+  /* Внутри Телеграма уводим в канал сразу его собственным переходом.
+     В обычном браузере ничего не открываем сами — просто оставляем ссылку. */
+  function openChannel(){
+    if (!CONFIG.channelUrl) return;
+    var tg = window.Telegram && window.Telegram.WebApp;
+    if (tg && tg.openTelegramLink){
+      try{ tg.openTelegramLink(CONFIG.channelUrl); }catch(e){}
+    }
+  }
+  channelLink.addEventListener("click", function(e){
+    var tg = window.Telegram && window.Telegram.WebApp;
+    if (tg && tg.openTelegramLink){ e.preventDefault(); tg.openTelegramLink(CONFIG.channelUrl); }
+  });
+
+  submitBtn.addEventListener("click", function(){
+    if (submitBtn.disabled) return;
+    var name = document.getElementById("fName").value.trim();
+    var tg = document.getElementById("fTg").value.trim();
+    queueLead({
+      name: name,
+      telegram: tg,
+      request: "Тест «Ветка реальности»",
+      consent: "да",
+      tab: "Тест Ветка реальности"
+    });
+    /* Сначала «Готово», потом уводим в канал — иначе на части клиентов
+       Телеграма openTelegramLink закрывает мини-апп раньше, чем человек
+       успеет увидеть подтверждение. */
+    showOnly(screens.thanks);
+    openChannel();
+  });
+
+  document.getElementById("restartBtn").addEventListener("click", function(){
+    current = 0;
+    document.getElementById("fName").value = "";
+    document.getElementById("fTg").value = "";
+    consentBox.checked = false;
+    submitBtn.disabled = true;
+    showOnly(screens.intro);
+  });
+});
+</script>
