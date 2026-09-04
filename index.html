@@ -229,12 +229,17 @@
 
   .field{margin-bottom:14px;}
   .field label{display:block; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;}
-  .field input, .field textarea{
+  .field input, .field textarea, .field select{
     width:100%; border:1.5px solid var(--line); border-radius:12px; padding:12px 14px;
     font-family:inherit; font-size:14.5px; background:var(--bg); color:var(--ink);
   }
-  .field input:focus, .field textarea:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);}
+  .field input:focus, .field textarea:focus, .field select:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);}
   .field textarea{resize:vertical; min-height:64px;}
+  .field select{appearance:none; -webkit-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%237B2CBF'><path d='M5.5 7.5l4.5 5 4.5-5z'/></svg>");
+    background-repeat:no-repeat; background-position:right 14px center; background-size:16px; padding-right:38px;
+  }
+  .field select:invalid{color:var(--ink-faint);}
 
   .foot-note{font-size:12.5px; color:var(--ink-faint); line-height:1.6; margin-top:16px; text-align:center;}
   .consent{display:flex; gap:10px; align-items:flex-start; margin-bottom:20px; cursor:pointer;}
@@ -329,8 +334,18 @@
     <div class="kicker">Последний шаг</div>
     <h2 class="headline" style="font-size:22px;">Оставьте контакт — и откройте канал</h2>
     <div class="field">
+      <label for="fIntent">Что вы хотели бы сейчас?</label>
+      <select id="fIntent" required>
+        <option value="" selected disabled hidden>Выберите вариант</option>
+      </select>
+    </div>
+    <div class="field">
       <label for="fName">Как вас зовут?</label>
       <input id="fName" type="text" placeholder="Ваше имя" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="fPhone">Ваш номер телефона</label>
+      <input id="fPhone" type="tel" placeholder="+7 900 000-00-00" autocomplete="tel">
     </div>
     <div class="field">
       <label for="fTg">Ваш телеграм-ник</label>
@@ -398,6 +413,14 @@ window.__appStart(function(){
     { q:"Если бы переход в другую ветку реальности начинался прямо сегодня, с одного маленького шага — вы бы его сделали?",
       a:["Не уверена, что готова","Хотела бы, но нужен понятный первый шаг","Да, если буду знать, что делать дальше","Да, готова начать прямо сейчас"]}
   ];
+
+  var intentOptions = [
+    "Хочу для начала просто быть в канале и присматриваться",
+    "Интересно, но пока не готова(ов) принимать решение",
+    "Хочу разобраться, подходит ли мне программа с менеджером",
+    "Готова(ов) обсудить участие в программе прямо сейчас"
+  ];
+  var intentAnswer = "";
 
   var stages = [
     ["Пробуждение сознания","Почему мозг сопротивляется переменам — и как его успокоить?"],
@@ -481,6 +504,18 @@ window.__appStart(function(){
     showOnly(screens.q);
   }
 
+  var intentSelect = document.getElementById("fIntent");
+  intentOptions.forEach(function(text){
+    var o = document.createElement("option");
+    o.value = text;
+    o.textContent = text;
+    intentSelect.appendChild(o);
+  });
+  intentSelect.addEventListener("change", function(){
+    intentAnswer = intentSelect.value;
+    updateSubmitState();
+  });
+
   document.getElementById("startBtn").addEventListener("click", function(){
     current = 0;
     renderQuestion();
@@ -496,9 +531,10 @@ window.__appStart(function(){
   var channelLink = document.getElementById("channelLink");
   channelLink.href = CONFIG.channelUrl;
 
-  consentBox.addEventListener("change", function(){
-    submitBtn.disabled = !consentBox.checked;
-  });
+  function updateSubmitState(){
+    submitBtn.disabled = !(consentBox.checked && intentAnswer);
+  }
+  consentBox.addEventListener("change", updateSubmitState);
 
   /* ——— отправка заявки, устойчивая к обрывам связи ———
      Кладём в буфер (localStorage) и пробуем отправить. Не дошло — полежит
@@ -559,10 +595,13 @@ window.__appStart(function(){
   submitBtn.addEventListener("click", function(){
     if (submitBtn.disabled) return;
     var name = document.getElementById("fName").value.trim();
+    var phone = document.getElementById("fPhone").value.trim();
     var tg = document.getElementById("fTg").value.trim();
     queueLead({
       name: name,
+      phone: phone,
       telegram: tg,
+      readiness: intentAnswer,
       request: "Тест «Ветка реальности»",
       consent: "да",
       tab: "Тест Ветка реальности"
@@ -576,7 +615,10 @@ window.__appStart(function(){
 
   document.getElementById("restartBtn").addEventListener("click", function(){
     current = 0;
+    intentAnswer = "";
+    intentSelect.value = "";
     document.getElementById("fName").value = "";
+    document.getElementById("fPhone").value = "";
     document.getElementById("fTg").value = "";
     consentBox.checked = false;
     submitBtn.disabled = true;
