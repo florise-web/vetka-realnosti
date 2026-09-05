@@ -227,6 +227,25 @@
   .perk{display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; font-size:14px; color:var(--ink-soft); line-height:1.5;}
   .perk .mark{color:var(--rose); font-size:15px; line-height:1.5;}
 
+  .badge-line{display:flex; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;}
+  .badge{
+    display:inline-flex; align-items:center; background:var(--accent-soft); color:var(--accent);
+    font-weight:700; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:5px 10px; border-radius:20px;
+  }
+  .badge-date{color:var(--ink-faint); font-size:12.5px; font-weight:600;}
+
+  .fit-box{
+    background:var(--surface-2); border-radius:16px; padding:16px 16px; margin:18px 0;
+  }
+  .fit-box h4{font-size:13.5px; font-weight:700; margin-bottom:8px;}
+  .fit-box .fit-yes h4{color:var(--accent);}
+  .fit-box .fit-no h4{color:var(--ink-faint);}
+  .fit-item{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:13.5px; color:var(--ink-soft); line-height:1.5;}
+  .fit-item .fmark{flex:none; font-size:13px;}
+  .fit-yes .fmark{color:var(--accent);}
+  .fit-no .fmark{color:var(--ink-faint);}
+
   .field{margin-bottom:14px;}
   .field label{display:block; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px;}
   .field input, .field textarea, .field select{
@@ -317,18 +336,39 @@
 
   <!-- program -->
   <section class="screen" data-screen="program">
-    <div class="kicker">Программа Ирины</div>
+    <div class="badge-line">
+      <span class="badge">Предзапись</span>
+      <span class="badge-date">Старт программы 21 сентября</span>
+    </div>
     <h2 class="headline" style="font-size:23px;">ПЕРЕХОД: НОВОЕ СОЗНАНИЕ</h2>
-    <p class="lede">Старт 21 сентября. Семь ступеней, которые шаг за шагом переводят вас в другую ветку реальности — с практикой и живой поддержкой наставника, за месяц, с любой точки, с которой вы начинаете.</p>
+    <p class="lede">Семь ступеней, которые шаг за шагом переводят вас в другую ветку реальности — с практикой и живой поддержкой наставника, за месяц, с любой точки, с которой вы начинаете.</p>
     <div id="stages"></div>
-    <h3 style="font-size:15px; margin:20px 0 12px;">Что вас ждёт в закрытом канале — уже сейчас</h3>
-    <div class="perk"><span class="mark">✦</span><span>Живые эфиры с Ириной прямо в канале — не запись, а прямой разговор, и вся информация о них будет там же</span></div>
-    <div class="perk"><span class="mark">✦</span><span>Практики, которых нет нигде в открытом доступе — ни в блоге, ни в открытых каналах</span></div>
-    <div class="perk"><span class="mark">✦</span><span>Личные ответы на ваши вопросы от самой Ирины — не от бота</span></div>
-    <div class="perk"><span class="mark">✦</span><span>Практику перехода и видео к ней — сразу, закреплённым сообщением</span></div>
-    <p class="lede" style="margin-top:16px;">Там я подробно раскрываю программу и называю форматы участия — здесь на экране цифр нет.</p>
+
+    <h3 style="font-size:15px; margin:20px 0 12px;">Что вы получите, если оставите заявку сейчас</h3>
+    <div class="perk"><span class="mark">✓</span><span>Место в закрытом канале ещё до открытия продаж — попадаете в него первой</span></div>
+    <div class="perk"><span class="mark">✓</span><span>Живые эфиры с Ириной прямо в канале — не запись, а прямой разговор, и вся информация о них будет там же</span></div>
+    <div class="perk"><span class="mark">✓</span><span>Практики, которых нет нигде в открытом доступе — ни в блоге, ни в открытых каналах</span></div>
+    <div class="perk"><span class="mark">✓</span><span>Личные ответы на ваши вопросы от самой Ирины — не от бота</span></div>
+    <div class="perk"><span class="mark">✓</span><span>Практику перехода и видео к ней — сразу, закреплённым сообщением</span></div>
+
+    <div class="fit-box">
+      <div class="fit-yes">
+        <h4>Вам сюда, если</h4>
+        <div class="fit-item"><span class="fmark">✓</span><span>вы чувствуете, что топчетесь на месте, и хотите сдвинуться за недели, а не годы</span></div>
+        <div class="fit-item"><span class="fmark">✓</span><span>вы готовы пробовать новое, даже если пока не знаете, как именно это сработает у вас</span></div>
+        <div class="fit-item"><span class="fmark">✓</span><span>вам важна живая поддержка, а не курс "включил и забыл"</span></div>
+      </div>
+      <div class="fit-no" style="margin-top:12px;">
+        <h4>Не сюда, если</h4>
+        <div class="fit-item"><span class="fmark">✕</span><span>вы ждёте, что изменится кто-то другой, а не вы сами</span></div>
+        <div class="fit-item"><span class="fmark">✕</span><span>вам нужна не практика, а разовая консультация</span></div>
+      </div>
+    </div>
+
+    <p class="lede">Полную программу, форматы участия и условия я раскрываю в закрытом канале — здесь, на экране заявки, этого нет.</p>
+    <p class="lede" style="font-weight:600;">Заявка — это не оплата. Вы просто занимаете место в канале до старта продаж 21 сентября, а дальше сами решаете, идти ли дальше.</p>
     <p class="lede" style="font-weight:600;">Чтобы не пропустить эфир — заходите в канал и оставайтесь там, отдельная регистрация не нужна.</p>
-    <button class="btn" id="toFormBtn">Вступить в закрытый канал</button>
+    <button class="btn" id="toFormBtn">Оставить заявку и войти в канал</button>
   </section>
 
   <!-- form -->
