@@ -75,7 +75,8 @@
   window.__tgSettled = function () {
     if (tgSettled) return;
     tgSettled = true;
-    if (launched) lateInit(); else launch();
+    lateInit();
+    launch();
   };
   window.__appStart = function (fn) { appStart = fn; launch(); };
   setTimeout(window.__tgSettled, TG_WAIT);
