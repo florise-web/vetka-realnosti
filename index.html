@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <meta name="description" content="Готовы ли вы перейти в другую ветку реальности? 16 честных вопросов, 3-4 минуты.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ирина">
@@ -51,6 +57,9 @@
       var top = 0;
       if (tg.contentSafeAreaInset && typeof tg.contentSafeAreaInset.top === "number") top += tg.contentSafeAreaInset.top;
       if (tg.safeAreaInset && typeof tg.safeAreaInset.top === "number") top += tg.safeAreaInset.top;
+      /* В полноэкранном режиме плавающие кнопки Телеграма занимают верх экрана.
+         Если клиент не отдал размеры, берем запас, чтобы контент под них не заезжал. */
+      if (tg.isFullscreen && top < 60) top = 100;
       document.documentElement.style.setProperty("--safe-top", top + "px");
     } catch (e) {}
   }
@@ -101,6 +110,7 @@
     --line:#E4D7ED;
     --shadow:0 20px 40px -24px rgba(110,47,160,.28);
     --radius:18px;
+    --safe-top:0px;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -131,7 +141,6 @@
     --rose:#E08CA8;
     --line:#392C4F;
     --shadow:0 20px 40px -24px rgba(0,0,0,.55);
-    --safe-top:0px;
   }
 
   *{box-sizing:border-box;}
@@ -293,7 +302,8 @@
     .screen{animation:none;}
   }
 </style>
-
+</head>
+<body>
 <div class="frame" role="application" aria-label="Тест «Ветка реальности»">
   <div class="frame-top">
     <div class="brand"><span class="dot"></span><span>Ирина · тест</span></div>
@@ -688,3 +698,6 @@ window.__appStart(function(){
   if (restartFromResultBtn) restartFromResultBtn.addEventListener("click", restartTest);
 });
 </script>
+
+</body>
+</html>
