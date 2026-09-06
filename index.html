@@ -46,6 +46,14 @@
     launched = true;
     appStart();
   }
+  function applySafeArea(tg) {
+    try {
+      var top = 0;
+      if (tg.contentSafeAreaInset && typeof tg.contentSafeAreaInset.top === "number") top += tg.contentSafeAreaInset.top;
+      if (tg.safeAreaInset && typeof tg.safeAreaInset.top === "number") top += tg.safeAreaInset.top;
+      document.documentElement.style.setProperty("--safe-top", top + "px");
+    } catch (e) {}
+  }
   function lateInit() {
     var tg = window.Telegram && window.Telegram.WebApp;
     if (!tg) return;
@@ -53,6 +61,15 @@
       tg.ready();
       tg.expand();
       if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+      if (typeof tg.requestFullscreen === "function") tg.requestFullscreen();
+      if (typeof tg.setBackgroundColor === "function") tg.setBackgroundColor("#FBF7FB");
+      if (typeof tg.setHeaderColor === "function") tg.setHeaderColor("#FBF7FB");
+      applySafeArea(tg);
+      if (typeof tg.onEvent === "function") {
+        tg.onEvent("fullscreenChanged", function () { applySafeArea(tg); });
+        tg.onEvent("safeAreaChanged", function () { applySafeArea(tg); });
+        tg.onEvent("contentSafeAreaChanged", function () { applySafeArea(tg); });
+      }
     } catch (e) {}
   }
   window.__tgSettled = function () {
@@ -113,6 +130,7 @@
     --rose:#E08CA8;
     --line:#392C4F;
     --shadow:0 20px 40px -24px rgba(0,0,0,.55);
+    --safe-top:0px;
   }
 
   *{box-sizing:border-box;}
@@ -125,7 +143,7 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:28px 20px 56px;
+    padding:calc(28px + var(--safe-top)) 20px 56px;
   }
   h1,h2,h3{font-family:"Fraunces",Georgia,serif; text-wrap:balance; margin:0;}
   ::selection{background:var(--accent-soft);}
