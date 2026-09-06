@@ -243,6 +243,34 @@
   .perk{display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; font-size:14px; color:var(--ink-soft); line-height:1.5;}
   .perk .mark{color:var(--rose); font-size:15px; line-height:1.5;}
 
+
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:16px 0 6px;}
+  .stat{background:var(--surface-2); border-radius:14px; padding:12px 10px; text-align:center;}
+  .stat b{display:block; font-family:"Fraunces",Georgia,serif; font-size:22px; line-height:1; color:var(--accent); margin-bottom:5px;}
+  .stat span{font-size:11.5px; color:var(--ink-soft); line-height:1.3; display:block;}
+
+  .team-box{
+    background:var(--accent); color:var(--accent-ink); border-radius:18px; padding:18px 18px 16px; margin:22px 0 6px;
+  }
+  .team-box .tb-cap{font-size:11.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; opacity:.85; margin-bottom:8px;}
+  .team-box h3{font-family:"Fraunces",Georgia,serif; font-size:20px; line-height:1.2; margin:0 0 10px; color:inherit;}
+  .team-box p{margin:0 0 10px; font-size:14px; line-height:1.55; opacity:.95;}
+  .team-box .tb-step{display:flex; gap:10px; align-items:flex-start; margin-bottom:8px; font-size:14px; line-height:1.5;}
+  .team-box .tb-step b{flex:none; width:22px; height:22px; border-radius:50%; background:rgba(255,255,255,.22); display:inline-flex; align-items:center; justify-content:center; font-size:12px;}
+  .team-box .tb-acc{display:inline-block; margin-top:4px; padding:8px 12px; border-radius:12px; background:rgba(255,255,255,.16); font-weight:700; font-size:14px; text-decoration:none; color:inherit;}
+  .team-box .tb-note{font-size:12px; opacity:.8; margin:8px 0 0;}
+
+
+  .hl{color:var(--accent); font-weight:700;}
+  .offer-title{font-size:30px !important; line-height:1.1; color:var(--accent); letter-spacing:.01em; margin:4px 0 12px;}
+  .status{background:var(--accent-soft); border-radius:14px; padding:12px 14px; font-size:14px; line-height:1.5; margin:4px 0 14px; color:var(--ink);}
+  .status b{font-weight:700;}
+  .perk-card{background:var(--surface-2); border-radius:14px; padding:13px 14px; margin-bottom:8px;}
+  .perk-card h4{margin:0 0 4px; font-size:14.5px; font-weight:700; color:var(--ink);}
+  .perk-card p{margin:0; font-size:13.5px; line-height:1.5; color:var(--ink-soft);}
+  .before-cta{font-size:14.5px; line-height:1.55; margin:18px 0 6px; color:var(--ink);}
+  .before-cta b{font-weight:700;}
+
   .badge-line{display:flex; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;}
   .badge{
     display:inline-flex; align-items:center; background:var(--accent-soft); color:var(--accent);
@@ -344,7 +372,8 @@
 
     <p class="lede" style="margin-top:16px;">Отдельно: тест не решает, что именно менять и как. Это просто честный взгляд на то, где вы находитесь сейчас.</p>
     <p class="lede">Переход в другую ветку реальности не происходит сам по себе. Его выстраивают шаг за шагом, и начать можно с любой точки, в которой вы сейчас находитесь. Ждать полной готовности не нужно, готовность приходит уже в процессе.</p>
-    <p class="lede" style="font-weight:600;">21 сентября у Ирины стартует программа «ПЕРЕХОД: НОВОЕ СОЗНАНИЕ», семь ступеней перехода в новую ветку реальности. Сейчас открыта предзапись, чтобы попасть в закрытый канал и получать всю информацию о программе.</p>
+    <p class="lede" style="font-weight:600;">21 сентября у Ирины Гребенюковой стартует программа «ПЕРЕХОД: НОВОЕ СОЗНАНИЕ», семь ступеней перехода в новую ветку реальности.</p>
+    <p class="lede" style="font-weight:600;">Сейчас идет предзапись. Кто в списке, попадает в закрытый канал первым, и условия участия узнает первым.</p>
 
     <p class="disclaimer">Это не диагноз и не гороскоп. Это способ посмотреть на себя со стороны.</p>
 
@@ -356,48 +385,58 @@
   <section class="screen" data-screen="program">
     <div class="badge-line">
       <span class="badge">Предзапись</span>
-      <span class="badge-date">Продажи открываются 21 сентября</span>
     </div>
     <div class="kicker" style="margin-top:2px;">7-ступенчатая программа Ирины Гребенюковой</div>
-    <h2 class="headline" style="font-size:23px;">ПЕРЕХОД: НОВОЕ СОЗНАНИЕ</h2>
-    <p class="lede">Программа, которая шаг за шагом переводит вас в другую ветку реальности. С практикой и живой поддержкой, за месяц, с любой точки, с которой вы начинаете.</p>
-    <p class="lede" style="font-weight:600;">Предзапись уже открыта. Место в закрытом канале можно занять сейчас.</p>
-    <p class="lede">Переход, это не разовое решение. Это навык. Ему можно научиться, и учиться можно с любой точки, в которой вы сейчас находитесь.</p>
+    <h2 class="headline offer-title">ПЕРЕХОД: НОВОЕ СОЗНАНИЕ</h2>
+    <p class="lede">Программа, которая шаг за шагом переводит вас в другую ветку реальности. С практикой и живой поддержкой. <span class="hl">Старт 21 сентября.</span></p>
+
+    <div class="status"><b>Предзапись уже открыта.</b> Место можно занять сейчас. Продажи откроются 21 сентября и продлятся до 28 сентября.</div>
+
+    <p class="lede">Переход в другую ветку реальности не происходит сам по себе. <span class="hl">Его выстраивают шаг за шагом</span>, и начать можно с любой точки, в которой вы сейчас находитесь.</p>
 
     <h3 class="subcap">Семь ступеней. Одна ступень, один шаг в новую реальность</h3>
     <div id="stages"></div>
 
-    <h3 class="subcap">Что вы получаете в закрытом канале уже сейчас</h3>
-    <div class="perk"><span class="mark">✓</span><span>Место в канале еще до открытия продаж, вы попадаете туда первой</span></div>
-    <div class="perk"><span class="mark">✓</span><span>Живые эфиры с Ириной прямо в канале, не запись, а прямой разговор</span></div>
-    <div class="perk"><span class="mark">✓</span><span>Практики, которых нет нигде в открытом доступе, ни в блоге, ни в открытых каналах</span></div>
-    <div class="perk"><span class="mark">✓</span><span>Личные ответы на ваши вопросы от самой Ирины, не от бота</span></div>
-    <div class="perk"><span class="mark">✓</span><span>Практику перехода и видео к ней, сразу, закрепленным сообщением</span></div>
-
-    <div class="fit-box">
-      <div class="fit-yes">
-        <h4>Вам сюда, если</h4>
-        <div class="fit-item"><span class="fmark">✓</span><span>вы чувствуете, что топчетесь на месте, и хотите сдвинуться за недели, а не годы</span></div>
-        <div class="fit-item"><span class="fmark">✓</span><span>вы готовы пробовать новое, даже если пока не знаете, как именно это сработает у вас</span></div>
-        <div class="fit-item"><span class="fmark">✓</span><span>вам важна живая поддержка, а не курс "включил и забыл"</span></div>
-      </div>
-      <div class="fit-no" style="margin-top:12px;">
-        <h4>Не сюда, если</h4>
-        <div class="fit-item"><span class="fmark">✕</span><span>вы ждете, что изменится кто-то другой, а не вы сами</span></div>
-        <div class="fit-item"><span class="fmark">✕</span><span>вам нужна не практика, а разовая консультация</span></div>
-      </div>
+    <h3 class="subcap">Что дает предзапись</h3>
+    <div class="perk-card">
+      <h4>Место в закрытом канале до открытия продаж</h4>
+      <p>Вы попадаете туда первой. Новое вы видите раньше всех, и условия участия узнаете первой.</p>
+    </div>
+    <div class="perk-card">
+      <h4>Практика перехода и видео к ней</h4>
+      <p>Сразу, закрепленным сообщением в канале. Можно начать уже сегодня, не дожидаясь старта.</p>
+    </div>
+    <div class="perk-card">
+      <h4>Практики, которых нет в открытом доступе</h4>
+      <p>Ни в блоге, ни в открытых каналах. Только для тех, кто в списке предзаписи.</p>
+    </div>
+    <div class="perk-card">
+      <h4>Личный разговор с командой Ирины</h4>
+      <p>Форматы участия и условия вам расскажут лично, до того как они появятся где-то еще.</p>
     </div>
 
-    <p class="lede">Полную программу, форматы участия и условия я раскрываю в закрытом канале. Здесь, на экране заявки, этого нет.</p>
-    <p class="lede" style="font-weight:600;">Заявка, это не оплата. Вы просто занимаете место в канале до старта продаж 21 сентября, а дальше сами решаете, идти ли дальше.</p>
-    <p class="lede" style="font-weight:600;">Чтобы не пропустить эфир, заходите в канал и оставайтесь там. Отдельная регистрация не нужна.</p>
+    <div class="team-box">
+      <div class="tb-cap">Что будет после заявки</div>
+      <h3>С вами свяжется команда Ирины</h3>
+      <p>Расскажем, как устроена программа и какой формат участия под вашу задачу, ответим на вопросы и поможем занять место.</p>
+      <div class="tb-step"><b>1</b><span>Вы оставляете заявку: имя, телефон, телеграм</span></div>
+      <div class="tb-step"><b>2</b><span>Сразу получаете доступ в закрытый канал</span></div>
+      <div class="tb-step"><b>3</b><span>Команда пишет вам лично в Телеграм</span></div>
+      <a class="tb-acc" href="https://t.me/florise_irina" target="_blank" rel="noopener">✈ @florise_irina</a>
+      <p class="tb-note">Пишем только с этого аккаунта.</p>
+    </div>
+
+    <p class="before-cta">После заявки с вами свяжется команда Ирины Гребенюковой. Расскажут, как устроена программа, ответят на вопросы и <b>закрепят за вами место до открытия продаж 21 сентября</b>.</p>
+
     <button class="btn" id="toFormBtn">Оставить заявку →</button>
+    <p class="disclaimer" style="text-align:center; margin-top:10px;"><span class="hl">Платить сейчас ничего не нужно.</span> Три поля: имя, телефон и телеграм.</p>
   </section>
 
   <!-- form -->
   <section class="screen" data-screen="form">
-    <div class="kicker">Последний шаг</div>
-    <h2 class="headline" style="font-size:22px;">Оставьте контакт, и откройте канал</h2>
+    <div class="kicker">Предзапись</div>
+    <h2 class="headline" style="font-size:22px;">Записываю вас в предзапись</h2>
+    <p class="lede">Оставьте, как к вам обращаться и куда написать приглашение.</p>
     <div class="field">
       <label for="fIntent">Что вы хотели бы сейчас?</label>
       <select id="fIntent" required>
@@ -420,18 +459,19 @@
       <input type="checkbox" id="consentData">
       <span>Я даю <a href="#" target="_blank" rel="noopener">согласие</a> на обработку моих персональных данных и ознакомлен(а) с <a href="#" target="_blank" rel="noopener">Политикой конфиденциальности</a>.</span>
     </label>
-    <p class="lede" style="margin:2px 0 12px; font-weight:600;">Живой эфир пройдет прямо в закрытом канале, просто зайдите туда, все остальное узнаете уже там.</p>
-    <button class="btn" id="submitBtn" disabled>Войти в закрытый канал</button>
-    <p class="disclaimer" style="text-align:center; margin-top:10px;">Платить сейчас не нужно. Всего три поля: имя, телефон и телеграм.</p>
+    <div class="status" style="margin:2px 0 12px;">Сразу после записи откроем закрытый канал Ирины. Новое вы увидите там первыми, там же практика перехода и материалы, которых нет в открытом доступе.</div>
+    <button class="btn" id="submitBtn" disabled>Отправить заявку →</button>
+    <p class="disclaimer" style="text-align:center; margin-top:10px;">Команда Ирины напишет вам в Телеграм с аккаунта @florise_irina. Платить сейчас ничего не нужно.</p>
   </section>
 
   <!-- thanks -->
   <section class="screen" data-screen="thanks">
     <div class="center">
       <div class="check-icon">✓</div>
-      <h2 class="headline" style="font-size:22px;">Готово. Добро пожаловать в закрытый канал.</h2>
+      <h2 class="headline" style="font-size:22px;">Заявка принята. Добро пожаловать в закрытый канал.</h2>
       <p class="lede" style="margin-top:12px;">Практика перехода и видео к ней уже ждут вас там, в закрепленном сообщении.</p>
-      <p class="lede" style="margin-top:8px; font-weight:600;">Важно: вебинар пройдет не по отдельной ссылке, а прямо в этом закрытом канале. Переходите туда и оставайтесь, регистрироваться больше никуда не нужно.</p>
+      <p class="lede" style="margin-top:8px; font-weight:600;">Команда Ирины напишет вам лично с аккаунта @florise_irina: ответит на вопросы и расскажет про форматы участия.</p>
+      <p class="lede" style="margin-top:8px;">Живые эфиры с Ириной проходят прямо в этом канале, отдельно никуда регистрироваться не нужно.</p>
       <a class="btn" style="margin-top:10px; text-decoration:none;" id="channelLink" href="#" target="_blank" rel="noopener">Перейти в закрытый канал</a>
     </div>
     <button class="restart-link" id="restartBtn">Пройти тест заново</button>
