@@ -125,17 +125,10 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:40px 16px 64px;
+    padding:28px 20px 56px;
   }
   h1,h2,h3{font-family:"Fraunces",Georgia,serif; text-wrap:balance; margin:0;}
   ::selection{background:var(--accent-soft);}
-
-  .backdrop{
-    position:fixed; inset:0; z-index:-1; overflow:hidden;
-  }
-  .backdrop svg{position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(1100px,140vw); opacity:.5;}
-  .backdrop path{stroke:var(--line); stroke-width:1.4; fill:none;}
-  .backdrop circle{fill:var(--line);}
 
   .eyebrow{
     font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
@@ -144,16 +137,11 @@
 
   .frame{
     width:100%; max-width:440px;
-    background:var(--surface);
-    border-radius:28px;
-    box-shadow:var(--shadow);
-    border:1px solid var(--line);
-    overflow:hidden;
     position:relative;
   }
   .frame-top{
     display:flex; align-items:center; justify-content:space-between;
-    padding:20px 22px 14px;
+    padding:0 0 16px;
   }
   .brand{display:flex; align-items:center; gap:9px;}
   .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
@@ -161,7 +149,7 @@
   .step-label{font-size:12px; color:var(--ink-faint); font-variant-numeric:tabular-nums;}
 
   .branch-track{
-    display:flex; gap:4px; padding:0 22px 18px; align-items:center;
+    display:flex; gap:4px; padding:0 0 20px; align-items:center;
   }
   .branch-track .seg{
     height:3px; flex:1; border-radius:3px; background:var(--line); position:relative; overflow:hidden;
@@ -172,7 +160,7 @@
   }
 
   .screen{
-    padding:6px 26px 30px;
+    padding:6px 0 30px;
     display:none;
     animation:rise .38s ease both;
   }
@@ -286,18 +274,6 @@
     .screen{animation:none;}
   }
 </style>
-
-<div class="backdrop" aria-hidden="true">
-  <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMin slice">
-    <path d="M400 0 C400 120 340 140 340 260 C340 360 260 380 260 480 C260 580 200 600 200 720"/>
-    <path d="M400 0 C400 120 460 140 460 260 C460 360 540 380 540 480 C540 580 600 600 600 720"/>
-    <path d="M400 0 C400 90 400 120 400 220 C400 320 400 340 400 460"/>
-    <circle cx="200" cy="720" r="4"/>
-    <circle cx="600" cy="720" r="4"/>
-    <circle cx="400" cy="460" r="4"/>
-    <circle cx="400" cy="0" r="4.5"/>
-  </svg>
-</div>
 
 <div class="frame" role="application" aria-label="Тест «Ветка реальности»">
   <div class="frame-top">
