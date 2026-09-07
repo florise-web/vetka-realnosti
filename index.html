@@ -111,6 +111,8 @@
     --shadow:0 20px 40px -24px rgba(110,47,160,.28);
     --radius:18px;
     --safe-top:0px;
+    --hl:#1A1024;
+    --warn:#C0392B;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -126,9 +128,13 @@
       --rose:#E08CA8;
       --line:#392C4F;
       --shadow:0 20px 40px -24px rgba(0,0,0,.55);
+      --hl:#FFFFFF;
+      --warn:#FF8A75;
     }
   }
   :root[data-theme="dark"]{
+    --hl:#FFFFFF;
+    --warn:#FF8A75;
     --bg:#15101F;
     --surface:#1E1730;
     --surface-2:#291F3F;
@@ -168,8 +174,8 @@
     position:relative;
   }
   .frame-top{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 0 16px;
+    display:flex; align-items:center; justify-content:flex-end;
+    padding:0 0 16px; min-height:16px;
   }
   .brand{display:flex; align-items:center; gap:9px;}
   .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
@@ -237,7 +243,7 @@
     flex:none; width:30px; height:30px; border-radius:50%; background:var(--accent-soft); color:var(--accent);
     display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; font-family:"Fraunces",serif;
   }
-  .stage-name{font-weight:700; font-size:14.5px; margin-bottom:3px;}
+  .stage-name{font-weight:700; font-size:14.5px; margin-bottom:3px; color:var(--hl);}
   .stage-q{color:var(--ink-soft); font-size:13.5px; line-height:1.5; font-style:italic;}
 
   .perk{display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; font-size:14px; color:var(--ink-soft); line-height:1.5;}
@@ -253,7 +259,8 @@
     background:var(--accent); color:var(--accent-ink); border-radius:18px; padding:18px 18px 16px; margin:22px 0 6px;
   }
   .team-box .tb-cap{font-size:11.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; opacity:.85; margin-bottom:8px;}
-  .team-box h3{font-family:"Fraunces",Georgia,serif; font-size:20px; line-height:1.2; margin:0 0 10px; color:inherit;}
+  .team-box h3{color:#FFFFFF;
+    font-family:"Fraunces",Georgia,serif; font-size:20px; line-height:1.2; margin:0 0 10px; color:inherit;}
   .team-box p{margin:0 0 10px; font-size:14px; line-height:1.55; opacity:.95;}
   .team-box .tb-step{display:flex; gap:10px; align-items:flex-start; margin-bottom:8px; font-size:14px; line-height:1.5;}
   .team-box .tb-step b{flex:none; width:22px; height:22px; border-radius:50%; background:rgba(255,255,255,.22); display:inline-flex; align-items:center; justify-content:center; font-size:12px;}
@@ -261,15 +268,15 @@
   .team-box .tb-note{font-size:12px; opacity:.8; margin:8px 0 0;}
 
 
-  .hl{color:var(--accent); font-weight:700;}
+  .hl{color:var(--hl); font-weight:700;}
   .offer-title{font-size:30px !important; line-height:1.1; color:var(--accent); letter-spacing:.01em; margin:4px 0 12px;}
   .status{background:var(--accent-soft); border-radius:14px; padding:12px 14px; font-size:14px; line-height:1.5; margin:4px 0 14px; color:var(--ink);}
-  .status b{font-weight:700;}
+  .status b{font-weight:700; color:var(--hl);}
   .perk-card{background:var(--surface-2); border-radius:14px; padding:13px 14px; margin-bottom:8px;}
-  .perk-card h4{margin:0 0 4px; font-size:14.5px; font-weight:700; color:var(--ink);}
+  .perk-card h4{margin:0 0 4px; font-size:14.5px; font-weight:700; color:var(--hl);}
   .perk-card p{margin:0; font-size:13.5px; line-height:1.5; color:var(--ink-soft);}
   .before-cta{font-size:14.5px; line-height:1.55; margin:18px 0 6px; color:var(--ink);}
-  .before-cta b{font-weight:700;}
+  .before-cta b{font-weight:700; color:var(--hl);}
 
   .badge-line{display:flex; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;}
   .badge{
@@ -311,6 +318,13 @@
   .consent input{margin-top:3px; flex:none; width:16px; height:16px; accent-color:var(--accent);}
   .consent span{font-size:13px; line-height:1.55; color:var(--ink-soft);}
   .consent a{color:var(--accent);}
+  .field input.err, .field select.err{border-color:var(--warn); outline:2px solid var(--warn); outline-offset:1px;}
+  .consent.err span{color:var(--warn);}
+  .consent.err input{outline:2px solid var(--warn); outline-offset:2px;}
+  .form-err{
+    color:var(--warn); font-size:13.5px; font-weight:700; line-height:1.5;
+    margin:0 0 10px;
+  }
   .btn:disabled{opacity:.45; cursor:not-allowed;}
   .disclaimer{font-size:12.5px; color:var(--ink-faint); font-style:italic; line-height:1.6; margin-top:14px;}
 
@@ -334,7 +348,6 @@
 <body>
 <div class="frame" role="application" aria-label="Тест «Ветка реальности»">
   <div class="frame-top">
-    <div class="brand"><span class="dot"></span><span>Ирина · тест</span></div>
     <div class="step-label" id="stepLabel"></div>
   </div>
   <div class="branch-track" id="track"></div>
@@ -455,12 +468,13 @@
       <label for="fTg">Ваш телеграм-ник</label>
       <input id="fTg" type="text" placeholder="@username" autocomplete="off">
     </div>
-    <label class="consent">
+    <label class="consent" id="consentLabel">
       <input type="checkbox" id="consentData">
       <span>Я даю <a href="#" target="_blank" rel="noopener">согласие</a> на обработку моих персональных данных и ознакомлен(а) с <a href="#" target="_blank" rel="noopener">Политикой конфиденциальности</a>.</span>
     </label>
     <div class="status" style="margin:2px 0 12px;">Сразу после записи откроем закрытый канал Ирины. Новое вы увидите там первыми, там же практика перехода и материалы, которых нет в открытом доступе.</div>
-    <button class="btn" id="submitBtn" disabled>Отправить заявку →</button>
+    <p class="form-err" id="formErr" hidden></p>
+    <button class="btn" id="submitBtn">Отправить заявку →</button>
     <p class="disclaimer" style="text-align:center; margin-top:10px;">Команда Ирины напишет вам в Телеграм с аккаунта @florise_irina. Платить сейчас ничего не нужно.</p>
   </section>
 
@@ -621,7 +635,7 @@ window.__appStart(function(){
   });
   intentSelect.addEventListener("change", function(){
     intentAnswer = intentSelect.value;
-    updateSubmitState();
+    intentSelect.classList.remove("err");
   });
 
   document.getElementById("startBtn").addEventListener("click", function(){
@@ -639,10 +653,72 @@ window.__appStart(function(){
   var channelLink = document.getElementById("channelLink");
   channelLink.href = CONFIG.channelUrl;
 
-  function updateSubmitState(){
-    submitBtn.disabled = !(consentBox.checked && intentAnswer);
+  var fName = document.getElementById("fName");
+  var fPhone = document.getElementById("fPhone");
+  var fTg = document.getElementById("fTg");
+  var consentLabel = document.getElementById("consentLabel");
+  var formErr = document.getElementById("formErr");
+
+  function digitsOf(s){ return (String(s).match(/[0-9]/g) || []).length; }
+
+  /* Телефон отдаем в таблицу только цифрами: со знаком + Гугл-таблица
+     иногда принимает значение за формулу и пишет в ячейку #ERROR!. */
+  function normPhone(s){
+    var d = String(s).replace(/[^0-9]/g, "");
+    if (d.length === 11 && d.charAt(0) === "8") d = "7" + d.slice(1);
+    return d;
   }
-  consentBox.addEventListener("change", updateSubmitState);
+  function normTg(s){
+    return String(s)
+      .replace(/^https?:\/\//i, "")
+      .replace(/^(t\.me|telegram\.me)\//i, "")
+      .replace(/^@+/, "")
+      .trim();
+  }
+
+  function clearErrors(){
+    fName.classList.remove("err");
+    fPhone.classList.remove("err");
+    fTg.classList.remove("err");
+    intentSelect.classList.remove("err");
+    consentLabel.classList.remove("err");
+    formErr.hidden = true;
+    formErr.textContent = "";
+  }
+
+  /* Заявка уходит только целиком. Если чего-то нет, показываем что именно
+     и подводим экран к первому незаполненному полю. */
+  function validateForm(){
+    clearErrors();
+    var miss = [];
+    var first = null;
+
+    if (fName.value.trim().length < 2){ fName.classList.add("err"); miss.push("имя"); first = first || fName; }
+    var phone = normPhone(fPhone.value);
+    if (phone.length < 10 || phone.length > 15){ fPhone.classList.add("err"); miss.push("телефон"); first = first || fPhone; }
+    var tg = normTg(fTg.value);
+    if (tg.length < 5 || /\s/.test(tg)){ fTg.classList.add("err"); miss.push("телеграм"); first = first || fTg; }
+    if (!intentAnswer){ intentSelect.classList.add("err"); miss.push("вариант ответа"); first = first || intentSelect; }
+    if (!consentBox.checked){ consentLabel.classList.add("err"); miss.push("согласие"); first = first || consentLabel; }
+
+    if (miss.length){
+      formErr.textContent = miss.length === 1
+        ? "Заполните: " + miss[0] + ". Без этого заявка не уйдет."
+        : "Заполните: " + miss.join(", ") + ". Без этого заявка не уйдет.";
+      formErr.hidden = false;
+      if (first && first.scrollIntoView) first.scrollIntoView({ block: "center", behavior: "smooth" });
+      if (first && first.focus && first !== consentLabel) { try { first.focus({ preventScroll: true }); } catch(e){ first.focus(); } }
+      return null;
+    }
+    return { name: fName.value.trim(), phone: phone, telegram: "@" + tg };
+  }
+
+  [fName, fPhone, fTg].forEach(function(el){
+    el.addEventListener("input", function(){ el.classList.remove("err"); });
+  });
+  consentBox.addEventListener("change", function(){
+    if (consentBox.checked) consentLabel.classList.remove("err");
+  });
 
   /* ,, отправка заявки, устойчивая к обрывам связи ,,
      Кладем в буфер (localStorage) и пробуем отправить. Не дошло, полежит
@@ -701,14 +777,12 @@ window.__appStart(function(){
   });
 
   submitBtn.addEventListener("click", function(){
-    if (submitBtn.disabled) return;
-    var name = document.getElementById("fName").value.trim();
-    var phone = document.getElementById("fPhone").value.trim();
-    var tg = document.getElementById("fTg").value.trim();
+    var data = validateForm();
+    if (!data) return;
     queueLead({
-      name: name,
-      phone: phone,
-      telegram: tg,
+      name: data.name,
+      phone: data.phone,
+      telegram: data.telegram,
       readiness: intentAnswer,
       request: "Тест «Ветка реальности»",
       consent: "да",
@@ -729,7 +803,7 @@ window.__appStart(function(){
     document.getElementById("fPhone").value = "";
     document.getElementById("fTg").value = "";
     consentBox.checked = false;
-    submitBtn.disabled = true;
+    clearErrors();
     showOnly(screens.intro);
   }
 
