@@ -201,6 +201,14 @@ footer .name{font-family:var(--display);font-size:22px;color:var(--gold-soft);fo
 .whole{position:relative;height:16px;cursor:pointer;display:flex;align-items:center}
 .whole::before{content:"";position:absolute;left:0;right:0;height:5px;border-radius:3px;background:var(--line-soft)}
 .whole i{position:relative;display:block;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));width:0}
+
+.frame{position:relative;cursor:pointer}
+.bigplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(180deg,var(--gold-soft),var(--gold));display:grid;place-items:center;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.bigplay::before{content:"";border-left:24px solid #1A1024;border-top:15px solid transparent;border-bottom:15px solid transparent;margin-left:7px}
+.bigplay:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.ctl .pp{font:600 14.5px var(--body);min-height:40px;padding:6px 16px;border-radius:999px;border:1px solid var(--gold);background:none;color:var(--gold-soft);cursor:pointer}
+.whole{height:22px}
+.frame:fullscreen{display:flex;align-items:center;border:0;border-radius:0}.frame:fullscreen video{height:100%;aspect-ratio:auto}
 </style>
 </head>
 <body>
@@ -225,10 +233,12 @@ footer .name{font-family:var(--display);font-size:22px;color:var(--gold-soft);fo
 <section style="display:flex;flex-direction:column;gap:14px">
   <div class="vhead"><p class="eyebrow">Видео</p><h2>Пошаговый метод</h2></div>
   <div class="frame">
-    <video id="v" poster="poster.jpg" controls playsinline preload="metadata" controlslist="nodownload"></video>
+    <video id="v" poster="poster.jpg" playsinline preload="metadata"></video>
+    <button type="button" class="bigplay" id="big" aria-label="Смотреть видео"></button>
   </div>
   <div class="whole" id="whole" role="slider" aria-label="Перемотка по всему видео" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><i id="fill"></i></div>
   <div class="ctl">
+    <button type="button" class="pp" id="pp">Смотреть</button>
     <span>Скорость</span>
     <div class="speed" role="group" aria-label="Скорость видео">
       <button type="button" id="sp1" data-r="1" aria-pressed="true">1x</button>
@@ -238,6 +248,7 @@ footer .name{font-family:var(--display);font-size:22px;color:var(--gold-soft);fo
       <button type="button" id="sp25" data-r="2.5" aria-pressed="false">2,5x</button>
     </div>
     <span class="prog" id="prog"></span>
+    <button type="button" class="pp" id="fs">На весь экран</button>
   </div>
   <div id="morewrap" style="padding-top:10px"><button type="button" class="btn btn-ghost" id="more" style="min-height:46px;padding:9px 22px;font-size:15px;cursor:pointer;font-family:var(--body)">Узнать подробности</button></div>
 </section>
@@ -333,6 +344,18 @@ footer .name{font-family:var(--display);font-size:22px;color:var(--gold-soft);fo
   }
   whole.addEventListener('click',function(e){var r=whole.getBoundingClientRect(); seekAll((e.clientX-r.left)/r.width*TOTAL)});
   whole.addEventListener('keydown',function(e){var t=before(cur)+(v.currentTime||0); if(e.key==='ArrowRight'){seekAll(t+15)} else if(e.key==='ArrowLeft'){seekAll(t-15)}});
+  var big=document.getElementById('big'), pp=document.getElementById('pp'), sw=false;
+  function toggle(){ if(v.paused){var p=v.play(); if(p&&p.catch)p.catch(function(){})} else v.pause() }
+  function ui(){ var on=!v.paused||sw; big.hidden=on; pp.textContent=on?'Пауза':'Смотреть' }
+  v.addEventListener('click',toggle); big.addEventListener('click',function(e){e.stopPropagation();toggle()}); pp.addEventListener('click',toggle);
+  v.addEventListener('play',function(){sw=false;ui()}); v.addEventListener('pause',ui);
+  v.addEventListener('ended',function(){ if(cur<PARTS.length-1){sw=true;ui()} });
+  document.getElementById('fs').addEventListener('click',function(){
+    var fr=v.parentNode;
+    if(document.fullscreenElement){document.exitFullscreen()}
+    else if(fr.requestFullscreen){fr.requestFullscreen().catch(function(){})}
+    else if(v.webkitEnterFullscreen){v.webkitEnterFullscreen()}
+  });
   load(0,false);
   window.__vetka={load:load,state:function(){return {cur:cur,seen:seen,total:TOTAL,done:done}}};
 })();
