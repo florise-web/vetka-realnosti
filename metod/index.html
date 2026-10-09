@@ -214,13 +214,11 @@ footer .name{font-family:var(--display);font-size:22px;color:var(--gold-soft);fo
 </head>
 <body>
 
-<div class="ribbon">Подробности появятся под видео · <b>досмотрите до конца</b></div>
 <div class="one">
 <header class="top">
-  <p class="eyebrow">Ирина Гребенюкова · видео 20 минут</p>
+  <p class="eyebrow">Ирина Гребенюкова</p>
   <h1>Как менять ветку <em>реальности</em></h1>
-  <p class="lead">Посмотрите видео целиком, подробности откроются под ним.</p>
-</header>
+  </header>
 
 
 
@@ -315,7 +313,7 @@ footer .name{font-family:var(--display);font-size:22px;color:var(--gold-soft);fo
     label();
   }
   function open(scroll){
-    if(done) return; done=true; box.hidden=false; box.classList.add('in'); document.getElementById('morewrap').hidden=true; document.querySelector('.ribbon').hidden=true; var ins=document.getElementById('inside'); if(ins){var q=ins.play(); if(q&&q.catch)q.catch(function(){ins.controls=true})}
+    if(done) return; done=true; box.hidden=false; box.classList.add('in'); document.getElementById('morewrap').hidden=true; var ins=document.getElementById('inside'); if(ins){var q=ins.play(); if(q&&q.catch)q.catch(function(){ins.controls=true})}
     try{localStorage.setItem(KEY,'1')}catch(e){}
     if(scroll) setTimeout(function(){box.scrollIntoView({behavior:'smooth',block:'start'})},300);
   }
