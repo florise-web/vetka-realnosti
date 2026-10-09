@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Как менять ветку реальности</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Раскладка: одна колонка-ствол шириной 1040px; программа уроков нарисована как ветка с узлами, бонусы уходят вбок отростками. Один темный мир, как на сайте «Перехода». */
+:root{
+  color-scheme:dark;
+  --night:#0A0710; --plum:#140C20; --plum-2:#1B1030;
+  --gold:#D8B26A; --gold-soft:#F0DCA8; --lilac:#A273E8;
+  --text:#EDE7F2; --muted:#A99BBA; --dim:#8A7C9C;
+  --line:rgba(216,178,106,.28); --line-soft:rgba(169,155,186,.18);
+  --display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --body:Manrope,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--night);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.65;padding-inline:20px;padding-block:0 96px;
+  background-image:radial-gradient(900px 520px at 85% -5%,rgba(123,79,201,.30),transparent 70%),radial-gradient(700px 480px at 0% 30%,rgba(162,115,232,.10),transparent 70%)}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(64px,9vw,112px)}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;margin:0;text-wrap:balance;color:var(--gold-soft)}
+h1{font-size:clamp(46px,8.4vw,92px);letter-spacing:-.01em}
+h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+h2{font-size:clamp(32px,4.8vw,50px)}
+h3{font-size:25px;line-height:1.2}
+p{margin:0}
+a{color:var(--gold-soft)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;border-radius:6px}
+.eyebrow{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.lead{font-size:clamp(18px,2.1vw,21px);color:var(--text);max-width:34em}
+.muted{color:var(--muted)}
+.head{display:flex;flex-direction:column;gap:16px;max-width:40em}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:14px 30px;border-radius:999px;background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#1A1024;font-weight:700;font-size:17px;text-decoration:none;text-align:center;box-shadow:0 14px 40px rgba(216,178,106,.22);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 48px rgba(216,178,106,.34)}
+.btn-ghost{background:none;color:var(--gold-soft);border:1px solid var(--line);box-shadow:none;font-weight:600}
+.btn-ghost:hover{box-shadow:none;border-color:var(--gold)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+
+/* первый экран */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(36px,6vw,72px) 0}
+.hero-text{display:flex;flex-direction:column;gap:24px;min-width:0}
+.facts{display:flex;flex-wrap:wrap;gap:10px 26px;padding:0;margin:0;list-style:none;color:var(--muted);font-size:15.5px}
+.facts b{color:var(--gold-soft);font-weight:600}
+.buy{display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px}
+.price{font-family:var(--display);font-size:46px;font-weight:600;color:var(--gold-soft);line-height:1;font-variant-numeric:lining-nums}
+.note{font-size:14px;color:var(--dim);max-width:36em}
+.hero-art{position:relative;min-width:0}
+.hero-art img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;border-radius:220px 220px 22px 22px;box-shadow:0 30px 80px rgba(10,7,16,.7)}
+.hero-art svg{position:absolute;left:-34%;bottom:-9%;width:120%;height:auto;pointer-events:none}
+
+/* узнавание */
+.know{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 48px}
+.know p{padding:20px 0;border-top:1px solid var(--line-soft);font-family:var(--display);font-style:italic;font-weight:500;font-size:24px;line-height:1.3;color:var(--text)}
+
+/* программа-ветка */
+.branch{list-style:none;margin:0;padding:0 0 0 34px;position:relative;display:flex;flex-direction:column;gap:30px}
+.branch::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,var(--gold),rgba(216,178,106,.15))}
+.branch li{position:relative;display:flex;flex-direction:column;gap:6px;max-width:42em}
+.branch li::before{content:"";position:absolute;left:-32px;top:9px;width:14px;height:14px;border-radius:50%;background:var(--night);border:2px solid var(--gold)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums}
+.meta span + span{color:var(--dim)}
+.branch p{color:var(--muted)}
+.branch .off{margin-left:clamp(14px,5vw,56px);padding:18px 22px;border:1px solid rgba(162,115,232,.35);border-radius:16px;background:rgba(162,115,232,.07)}
+.branch .off::before{left:calc(-32px - clamp(14px,5vw,56px));border-color:var(--lilac);width:10px;height:10px;left:calc(-30px - clamp(14px,5vw,56px));top:26px}
+.branch .off::after{content:"";position:absolute;top:31px;right:100%;width:calc(clamp(14px,5vw,56px) + 20px);height:1px;background:rgba(162,115,232,.5)}
+.branch .off .meta{color:var(--lilac)}
+.total{color:var(--muted);max-width:42em}
+
+/* как устроено */
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:26px 40px;margin:0}
+.rooms div{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:16px}
+.rooms dt{font-family:var(--display);font-size:24px;font-weight:600;color:var(--gold-soft)}
+.rooms dd{margin:0;color:var(--muted);font-size:15.5px}
+
+/* автор */
+.author{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(28px,5vw,64px);align-items:start}
+.author > div{display:flex;flex-direction:column;gap:18px;min-width:0}
+.quote{font-family:var(--display);font-style:italic;font-size:clamp(28px,4vw,40px);line-height:1.15;color:var(--gold)}
+.nums{display:flex;flex-wrap:wrap;gap:20px 44px;margin:0}
+.nums div{display:flex;flex-direction:column}
+.nums dt{font-family:var(--display);font-size:44px;font-weight:600;line-height:1;color:var(--gold-soft)}
+.nums dd{margin:6px 0 0;color:var(--muted);font-size:14.5px;max-width:15em}
+
+/* оплата */
+.pay{border:1px solid var(--line);border-radius:28px;background:linear-gradient(160deg,var(--plum-2),var(--plum));padding:clamp(26px,5vw,52px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,56px)}
+.pay > div{display:flex;flex-direction:column;gap:18px;min-width:0}
+.incl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;color:var(--text)}
+.incl li{padding-left:26px;position:relative}
+.incl li::before{content:"";position:absolute;left:2px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;color:var(--muted)}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:28px;line-height:1;color:var(--gold);font-weight:600}
+.pay .price{font-size:64px}
+
+/* вопросы */
+.faq{display:flex;flex-direction:column;max-width:46em}
+.faq details{border-top:1px solid var(--line-soft);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--line-soft)}
+.faq summary{cursor:pointer;font-family:var(--display);font-size:25px;font-weight:600;color:var(--gold-soft);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold);font-family:var(--body);font-weight:400}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{color:var(--muted);padding-top:10px;max-width:40em}
+
+.final{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+footer{border-top:1px solid var(--line);padding-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px 48px;font-size:14px;color:var(--muted)}
+footer div,footer nav{display:flex;flex-direction:column;gap:10px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--gold-soft)}
+footer .name{font-family:var(--display);font-size:22px;color:var(--gold-soft);font-weight:600}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:none;align-items:center;justify-content:space-between;gap:14px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(10,7,16,.94);border-top:1px solid var(--line)}
+.bar .price{font-size:30px}
+.bar .btn{min-height:48px;padding:10px 22px;font-size:15.5px}
+
+@media (max-width:760px){
+  body{font-size:16.5px}
+  .hero,.author,.pay{grid-template-columns:minmax(0,1fr)}
+  .hero-art{max-width:340px;order:-1}
+  .author img{max-width:300px}
+  .bar{display:flex}
+  .buy .btn,.final .btn,.pay .btn{width:100%}
+}
+
+.one{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+.one .hero{padding-block:clamp(28px,5vw,60px) 0}
+.one .incl{font-size:18px}
+.vid{font-size:15px;color:var(--muted)}
+
+.one{gap:44px}
+.top{display:flex;flex-direction:column;gap:18px;padding-block:clamp(28px,5vw,56px) 0;max-width:40em}
+.player{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;aspect-ratio:16/9;width:100%;max-width:100%;border-radius:22px;border:1px solid var(--line);padding:clamp(18px,3vw,32px);text-decoration:none;overflow:hidden;
+  background:radial-gradient(600px 300px at 80% 0%,rgba(123,79,201,.45),transparent 70%),linear-gradient(160deg,var(--plum-2),var(--night))}
+.player .play{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:linear-gradient(180deg,var(--gold-soft),var(--gold));display:grid;place-items:center;box-shadow:0 14px 40px rgba(216,178,106,.3)}
+.player .play::before{content:"";border-left:24px solid #1A1024;border-top:15px solid transparent;border-bottom:15px solid transparent;margin-left:7px}
+.player b{font-family:var(--display);font-size:clamp(20px,3vw,30px);font-weight:600;color:var(--gold-soft);line-height:1.15}
+.player span{color:var(--muted);font-size:14.5px}
+.watch{display:flex;flex-wrap:wrap;gap:12px}
+.watch .btn{min-height:48px;padding:10px 22px;font-size:15.5px}
+.buybox{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);border:1px solid var(--line);border-radius:28px;background:linear-gradient(160deg,var(--plum-2),var(--plum));padding:clamp(24px,4.5vw,48px)}
+.buybox > div{display:flex;flex-direction:column;gap:16px;min-width:0}
+.buybox .price{font-size:60px}
+.buybox .btn{width:100%}
+@media (max-width:760px){.buybox{grid-template-columns:minmax(0,1fr)}.watch .btn{flex:1 1 100%}}
+
+.one{gap:28px;max-width:920px}
+.top{padding-block:clamp(24px,4vw,44px) 0;gap:14px}
+.top h1{font-size:clamp(36px,6.4vw,64px)}
+.frame{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#000;line-height:0}
+.frame video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;color:var(--muted);font-size:14.5px}
+.speed{display:flex;gap:6px}
+.speed{flex-wrap:wrap}
+.speed button{font:600 14.5px var(--body);min-width:52px;min-height:40px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--gold-soft);cursor:pointer;font-variant-numeric:tabular-nums}
+.speed button[aria-pressed="true"]{background:var(--gold);color:#1A1024;border-color:var(--gold)}
+.speed button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.prog{flex:1 1 180px;min-width:0;text-align:right}
+.buybox h2{font-size:clamp(30px,4.4vw,44px)}
+.legal{font-size:13px;color:var(--dim)}
+.legal a{color:var(--muted)}
+.foot{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:13.5px;color:var(--dim)}
+.foot a{color:var(--muted);text-decoration:none}
+@media (prefers-reduced-motion:no-preference){.buybox.in{animation:rise .7s ease both}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.ribbon{margin-inline:-20px;padding:9px 20px;text-align:center;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);background:var(--plum-2);border-bottom:1px solid var(--line)}
+.ribbon b{color:var(--gold);font-weight:700}
+.top{align-items:center;text-align:center;margin-inline:auto}
+.fit{display:flex;flex-direction:column;gap:12px;max-width:640px;margin-inline:auto;width:100%}
+.fit h2,.vhead h2{font-size:clamp(26px,3.6vw,36px);text-align:center}
+.fit .eyebrow,.vhead .eyebrow{text-align:center}
+.fit ol{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:f}
+.fit li{counter-increment:f;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 18px;border:1px solid var(--line-soft);border-radius:14px;background:rgba(162,115,232,.06)}
+.fit li::before{content:"0" counter(f);font-size:12.5px;font-weight:700;letter-spacing:.08em;color:var(--gold);font-variant-numeric:tabular-nums}
+.vhead{display:flex;flex-direction:column;gap:8px}
+.sys{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:clamp(20px,4vw,44px);align-items:center;border:1px solid var(--line-soft);border-radius:24px;padding:clamp(20px,4vw,40px);background:rgba(162,115,232,.05)}
+.sys video{display:block;width:100%;border-radius:22px;border:1px solid var(--line);background:#000}
+.sys > div{display:flex;flex-direction:column;gap:14px;min-width:0}
+.sys h2{font-size:clamp(26px,3.6vw,36px)}
+.sys .said{font-family:var(--display);font-style:italic;font-size:22px;line-height:1.3;color:var(--gold)}
+.after{display:flex;flex-direction:column;gap:28px}
+@media (prefers-reduced-motion:no-preference){.after.in{animation:rise .7s ease both}}
+@media (max-width:760px){.sys{grid-template-columns:minmax(0,1fr)}.sys video{max-width:240px;margin-inline:auto}}
+
+/* компактный верх: видео должно быть видно без прокрутки */
+.one{gap:18px}
+.top{padding-block:18px 0;gap:8px;max-width:none}
+.top h1{font-size:clamp(30px,5vw,46px)}
+.top .lead{font-size:16px;color:var(--muted)}
+.fit{max-width:none;gap:8px}
+.fit ol{margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.fit li{padding:9px 12px;grid-template-columns:22px minmax(0,1fr);gap:8px;font-size:14px;line-height:1.4;border-radius:12px}
+.vhead{display:none}
+@media (max-width:760px){.fit ol{grid-template-columns:minmax(0,1fr);gap:6px}.fit li{padding:7px 12px;font-size:13.5px}.top h1{font-size:28px}.top .lead{font-size:14.5px}}
+
+.whole{position:relative;height:16px;cursor:pointer;display:flex;align-items:center}
+.whole::before{content:"";position:absolute;left:0;right:0;height:5px;border-radius:3px;background:var(--line-soft)}
+.whole i{position:relative;display:block;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));width:0}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Подробности появятся под видео · <b>досмотрите до конца</b></div>
+<div class="one">
+<header class="top">
+  <p class="eyebrow">Ирина Гребенюкова · видео 20 минут</p>
+  <h1>Как менять ветку <em>реальности</em></h1>
+  <p class="lead">Посмотрите видео целиком, подробности откроются под ним.</p>
+</header>
+
+<section class="fit">
+  <p class="eyebrow">Это видео для вас, если</p>
+  <ol>
+    <li><span>Вы многое про себя поняли, а жизнь идет по тому же кругу.</span></li>
+    <li><span>Доход, работа или отношения годами стоят на одном месте.</span></li>
+    <li><span>Вы знаете, чего хотите, и не понимаете, с какого шага начать.</span></li>
+  </ol>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:14px">
+  <div class="vhead"><p class="eyebrow">Видео</p><h2>Пошаговый метод</h2></div>
+  <div class="frame">
+    <video id="v" poster="poster.jpg" controls playsinline preload="metadata" controlslist="nodownload"></video>
+  </div>
+  <div class="whole" id="whole" role="slider" aria-label="Перемотка по всему видео" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><i id="fill"></i></div>
+  <div class="ctl">
+    <span>Скорость</span>
+    <div class="speed" role="group" aria-label="Скорость видео">
+      <button type="button" id="sp1" data-r="1" aria-pressed="true">1x</button>
+      <button type="button" id="sp125" data-r="1.25" aria-pressed="false">1,25x</button>
+      <button type="button" id="sp15" data-r="1.5" aria-pressed="false">1,5x</button>
+      <button type="button" id="sp2" data-r="2" aria-pressed="false">2x</button>
+      <button type="button" id="sp25" data-r="2.5" aria-pressed="false">2,5x</button>
+    </div>
+    <span class="prog" id="prog"></span>
+  </div>
+  <div id="morewrap" style="padding-top:10px"><button type="button" class="btn btn-ghost" id="more" style="min-height:46px;padding:9px 22px;font-size:15px;cursor:pointer;font-family:var(--body)">Узнать подробности</button></div>
+</section>
+
+<div class="after" id="next" hidden>
+<section class="head" style="max-width:40em">
+  <p class="eyebrow">Подробности</p>
+  <h2>Как перейти в новую ветку реальности</h2>
+  <p>Чтобы поменять ветку реальности, нужна стратегия. Это формула мышления, по которой вы идете шаг за шагом. В видео я показала принцип, а подробную пошаговую формулу даю в практикуме «Новая ветка реальности».</p>
+</section>
+
+<section class="sys">
+  <video id="inside" src="inside.mp4" poster="inside.jpg" muted loop playsinline preload="none" aria-label="Запись экрана: чат практикума изнутри"></video>
+  <div>
+    <p class="eyebrow">Так практикум выглядит изнутри</p>
+    <h2>Кусочек моей системы, которая мне и моим ученицам дает результат</h2>
+    <ul class="incl">
+      <li>огромная база знаний и уроки с практическими домашними заданиями</li>
+      <li>еженедельные эфиры</li>
+      <li>на вопрос ученика я сразу записываю подкаст или лекцию, поэтому база знаний растет каждый день</li>
+    </ul>
+    <p class="said">«Я создала не просто обучение, которое прошел и забыл. Я создаю семью единомышленников, с которой мы разбираем все важное, поддерживаем и вдохновляем друг друга».</p>
+  </div>
+</section>
+
+<section class="buybox">
+  <div>
+    <p class="eyebrow">Квантовый практикум · 8 уроков · доступ 30 дней</p>
+    <h2>Новая ветка реальности</h2>
+    <p style="color:var(--text)">Вы узнаете, как внимание формирует реальность, и получите пошаговую инструкцию перехода туда, где уже есть желаемое.</p>
+    <ul class="incl">
+      <li>доступ в закрытый чат с уроками на 30 дней</li>
+      <li>все видеоуроки</li>
+      <li>практики</li>
+      <li>отдельный чат внутри практикума со мной: общение, вопросы и поддержка</li>
+    </ul>
+  </div>
+  <div>
+    <span class="price">3 300 ₽</span>
+    <a class="btn" href="https://peoplenewtning.getplatinum.ru/payment/elb4nf5" target="_blank" rel="noopener">Оплатить картой РФ и начать</a>
+    <a class="btn btn-ghost" href="https://t.me/tribute/app?startapp=s14h3" target="_blank" rel="noopener">Оплатить картой не РФ и начать</a>
+    <p class="note">После оплаты я сразу пришлю вам доступ в закрытую группу с уроками в Telegram.</p>
+    <p class="legal">Оплачивая, вы принимаете <a href="https://docs.yandex.ru/view/d/SBqO7dWgWwKQwQChnp87WSPegnqahzm72s0qoIz-cKg6a1pkcjdrVUp6UQ" target="_blank" rel="noopener">оферту</a> и <a href="https://docs.yandex.ru/view/d/SBqO7dWgWwKQwQChnp87WSPegnqahzm72s0qoIz-cKg6TzNFR3kzRG0wdw" target="_blank" rel="noopener">политику обработки данных</a>. ИП Гребенюкова Ирина Михайловна, ИНН 312601501360.</p>
+  </div>
+</section>
+</div>
+
+
+<div class="foot">
+  <span>© Ирина Гребенюкова, 2026</span>
+  <a href="https://t.me/florise_irina" target="_blank" rel="noopener">Вопросы в Telegram: @florise_irina</a>
+</div>
+</div>
+
+<script>
+(function(){
+  var PARTS=[66.69, 58.33, 58.33, 61.97, 58.33, 58.33, 58.23, 66.67, 58.33, 58.33, 63.47, 57.1, 58.33, 58.33, 66.67, 58.33, 58.33, 62.77, 55.27, 61.73, 7.96];            // длительность частей видео в секундах
+  var NEED=0.9;            // какую долю видео нужно посмотреть, чтобы открылся следующий шаг
+  var KEY='vetka_watched_v1';
+  var TOTAL=PARTS.reduce(function(a,b){return a+b},0);
+  var v=document.getElementById('v'), box=document.getElementById('next'), prog=document.getElementById('prog');
+  var cur=0, rate=1, seen=0, last=null, done=false, fill=document.getElementById('fill'), whole=document.getElementById('whole');
+  function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+  function before(i){var s=0;for(var k=0;k<i;k++)s+=PARTS[k];return s}
+  function label(){var t=before(cur)+(v.currentTime||0); prog.textContent=fmt(t)+' из '+fmt(TOTAL); var p=Math.min(100,t/TOTAL*100); fill.style.width=p+'%'; whole.setAttribute('aria-valuenow',Math.round(p))}
+  function load(i,play,at){
+    cur=i; last=null; v.src='p'+i+'.mp4'; v.load();
+    v.addEventListener('loadedmetadata',function f(){v.removeEventListener('loadedmetadata',f); v.playbackRate=rate; if(at){v.currentTime=at} if(play){var p=v.play(); if(p&&p.catch)p.catch(function(){})}});
+    label();
+  }
+  function open(scroll){
+    if(done) return; done=true; box.hidden=false; box.classList.add('in'); document.getElementById('morewrap').hidden=true; document.querySelector('.ribbon').hidden=true; var ins=document.getElementById('inside'); if(ins){var q=ins.play(); if(q&&q.catch)q.catch(function(){ins.controls=true})}
+    try{localStorage.setItem(KEY,'1')}catch(e){}
+    if(scroll) setTimeout(function(){box.scrollIntoView({behavior:'smooth',block:'start'})},300);
+  }
+  try{ if(localStorage.getItem(KEY)==='1') open(false) }catch(e){}
+  v.addEventListener('timeupdate',function(){
+    var t=v.currentTime;
+    if(last!==null && !v.seeking){ var d=t-last; if(d>0 && d<2.5*Math.max(1,v.playbackRate)) seen+=d; }   // перемотка не засчитывается
+    last=t; label();
+    if(!done && seen>=TOTAL*NEED) open(true);
+  });
+  v.addEventListener('seeked',function(){last=v.currentTime});
+  v.addEventListener('ended',function(){ if(cur<PARTS.length-1) load(cur+1,true); else if(seen>=TOTAL*0.6) open(true) });
+  var bs=document.querySelectorAll('.speed button');
+  function mark(){bs.forEach(function(x){x.setAttribute('aria-pressed',parseFloat(x.dataset.r)===rate?'true':'false')})}
+  bs.forEach(function(b){b.addEventListener('click',function(){rate=parseFloat(b.dataset.r); v.playbackRate=rate; mark()})});
+  document.getElementById('more').addEventListener('click',function(){open(true)});
+  function seekAll(t){
+    t=Math.max(0,Math.min(TOTAL-1,t)); var i=0; while(i<PARTS.length-1 && t>=before(i+1)) i++;
+    var at=t-before(i), was=!v.paused;
+    if(i===cur){last=null; v.currentTime=at} else load(i,was,at);
+  }
+  whole.addEventListener('click',function(e){var r=whole.getBoundingClientRect(); seekAll((e.clientX-r.left)/r.width*TOTAL)});
+  whole.addEventListener('keydown',function(e){var t=before(cur)+(v.currentTime||0); if(e.key==='ArrowRight'){seekAll(t+15)} else if(e.key==='ArrowLeft'){seekAll(t-15)}});
+  load(0,false);
+  window.__vetka={load:load,state:function(){return {cur:cur,seen:seen,total:TOTAL,done:done}}};
+})();
+</script>
+
+
+</body>
+</html>
