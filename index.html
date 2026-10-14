@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<script>(function(){var V="20261010170000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
+<script>(function(){var V="20261014140000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
 
 <meta http-equiv="Cache-Control" content="no-store">
 <meta name="description" content="Что не пускает вас в жизнь, где есть деньги, близость и свои решения? 9 вопросов, 2 минуты.">
@@ -377,6 +377,27 @@
   }
   .step-pick .sp-name{ font-weight:600; font-size:14.5px; margin-bottom:2px; }
   .step-pick .sp-q{ font-size:13.5px; line-height:1.5; color:var(--ink-soft); }
+
+  .numlist{margin:14px 0 0}
+  .numlist .ni{display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:13px 0;border-top:1px solid var(--line)}
+  .numlist .ni:first-child{border-top:0}
+  .numlist .nn{font-weight:700;font-size:14px;line-height:34px;text-align:center;color:var(--accent);background:var(--accent-soft);border-radius:10px;height:34px}
+  .numlist .nt{font-size:15px;line-height:1.55;color:var(--ink)}
+  .numlist .nt b{color:var(--hl)}
+  .ticklist{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:10px}
+  .ticklist li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.55;color:var(--ink)}
+  .ticklist li::before{content:"\\2713";display:block;width:22px;height:22px;border-radius:7px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:12px;line-height:22px;text-align:center}
+  .notfor{margin-top:12px;padding:16px;border-radius:16px;background:var(--surface-2)}
+  .notfor p{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+  .notfor p:last-child{margin:0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+  .chip{font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 12px;border-radius:999px;background:var(--surface-2);color:var(--ink-soft)}
+  .offer-box{margin-top:26px;padding:24px 20px;border-radius:22px;background:var(--surface);border:1px solid var(--accent);box-shadow:var(--shadow)}
+  .offer-box .ob-cap{font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .offer-box h3{font-size:22px;line-height:1.22;margin:0 0 10px;color:var(--hl)}
+  .dashed{margin:22px 0 0;padding:20px 16px;border:1px dashed var(--accent);border-radius:16px;text-align:center}
+  .dashed b{display:block;font-size:17px;line-height:1.3;color:var(--hl);margin-bottom:6px}
+  .dashed span{font-size:14px;line-height:1.55;color:var(--ink-soft)}
 </style>
 </head>
 <body>
@@ -423,13 +444,16 @@
     <h3 class="subcap">С какой ступени это снимается</h3>
     <div id="rSteps"></div>
 
-    <p class="lede" style="margin-top:16px;">Замок снимается не годами и не силой воли. Он снимается с той ступени, на которой стоит. Вы только что увидели свою.</p>
-    <p class="lede" style="font-weight:600;">У Ирины Гребенюковой это программа «ПЕРЕХОД: НОВОЕ СОЗНАНИЕ», семь ступеней перехода в новую ветку реальности. Старт 23 ноября.</p>
-    <p class="lede" style="font-weight:600;">Сейчас идет предзапись. Кто в списке, заходит по самой низкой цене и узнает условия раньше всех.</p>
+    <div class="offer-box">
+      <div class="ob-cap">Что с этим делать</div>
+      <h3>Замок снимается с той ступени, на которой он стоит</h3>
+      <p class="lede">Не годами и не силой воли. Свою ступень вы только что увидели. Дальше нужен порядок: снимаете замок, и остальное перестает держать.</p>
+      <div class="chips"><span class="chip">Старт 23 ноября</span><span class="chip">7 ступеней</span><span class="chip">Онлайн</span><span class="chip">Все в записи</span></div>
+      <p class="lede" style="font-weight:600;margin-bottom:0;">У Ирины Гребенюковой это программа «ПЕРЕХОД: НОВОЕ СОЗНАНИЕ». Сейчас идет предзапись: кто в списке, заходит по самой низкой цене и узнает условия раньше всех.</p>
+      <button class="btn" id="toProgramBtn" style="margin-top:18px;">Посмотреть программу →</button>
+    </div>
 
     <p class="disclaimer">Это не диагноз и не гороскоп. Это то, что вы сами про себя ответили, собранное в одну картину.</p>
-
-    <button class="btn" id="toProgramBtn" style="margin-top:18px;">Что за программа? →</button>
     <button class="restart-link" id="restartFromResultBtn">Пройти тест заново</button>
   </section>
 
@@ -448,6 +472,30 @@
 
     <h3 class="subcap">Семь ступеней. Одна ступень, один шаг в новую реальность</h3>
     <div id="stages"></div>
+
+    <h3 class="subcap">Кому эта программа</h3>
+    <div class="numlist">
+      <div class="ni"><div class="nn">01</div><div class="nt">Вы все понимаете про себя, а между <b>понимаю</b> и <b>делаю</b> каждый раз пропасть</div></div>
+      <div class="ni"><div class="nn">02</div><div class="nt">Начинаете с подъемом, а через пару недель оказываетесь там же, откуда вышли</div></div>
+      <div class="ni"><div class="nn">03</div><div class="nt">Для других получается легко, а для себя ничего не сдвигается</div></div>
+      <div class="ni"><div class="nn">04</div><div class="nt">Живете по сценарию, который выбрали не вы, и уже не помните, где свернули</div></div>
+      <div class="ni"><div class="nn">05</div><div class="nt">Хотите большего и сами себя останавливаете, как только становится близко</div></div>
+    </div>
+
+    <h3 class="subcap">Кому не подойдет</h3>
+    <div class="notfor">
+      <p>Если вы ищете терапию. Программа работает с сознанием, состоянием и телом, но не заменяет психолога или врача.</p>
+      <p>Если вы хотите, чтобы изменился кто-то другой. Все семь ступеней работают только на вас.</p>
+    </div>
+
+    <h3 class="subcap">Что внутри</h3>
+    <ul class="ticklist">
+      <li>доступ ко всем семи ступеням</li>
+      <li>живые эфиры онлайн 14–21 день, а не записи</li>
+      <li>практики к каждой ступени</li>
+      <li>записи эфиров остаются после программы</li>
+      <li>форматы участия на выбор: от самостоятельного до личной работы с Ириной</li>
+    </ul>
 
     <h3 class="subcap">Что дает предзапись</h3>
     <div class="perk-card">
@@ -476,6 +524,11 @@
       <div class="tb-step"><b>3</b><span>Команда пишет вам лично в Телеграм</span></div>
       <a class="tb-acc" href="https://t.me/florise_irina" target="_blank" rel="noopener">✈ @florise_irina</a>
       <p class="tb-note">Пишем только с этого аккаунта.</p>
+    </div>
+
+    <div class="dashed">
+      <b>Предзапись ничего не стоит и ни к чему не обязывает</b>
+      <span>Вы занимаете место в списке и первыми узнаете условия. Решать будете потом, когда увидите цены и форматы</span>
     </div>
 
     <p class="before-cta">После заявки с вами свяжется команда Ирины Гребенюковой. Расскажут, как устроена программа, ответят на вопросы и <b>закрепят за вами место в списке предзаписи</b>.</p>
