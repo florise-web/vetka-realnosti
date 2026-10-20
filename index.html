@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<script>(function(){var V="20261014160000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
+<script>(function(){var V="20261020150000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
 
 <meta http-equiv="Cache-Control" content="no-store">
 <meta name="description" content="Что не пускает вас в жизнь, где есть деньги, близость и свои решения? 9 вопросов, 2 минуты.">
@@ -398,6 +398,50 @@
   .dashed{margin:22px 0 0;padding:20px 16px;border:1px dashed var(--accent);border-radius:16px;text-align:center}
   .dashed b{display:block;font-size:17px;line-height:1.3;color:var(--hl);margin-bottom:6px}
   .dashed span{font-size:14px;line-height:1.55;color:var(--ink-soft)}
+
+  .scrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+  .scrow.me{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .scrow .nm{font-weight:600;font-size:15px;color:var(--ink)}
+  .scrow .rt{display:flex;align-items:center;gap:10px}
+  .seg{display:flex;gap:4px}
+  .seg i{width:18px;height:8px;border-radius:4px;background:var(--line);display:block}
+  .seg i.f{background:var(--accent)}
+  .scrow .wd{font-size:13px;color:var(--ink-faint);width:76px;text-align:right}
+  .pw{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;margin-top:11px;font-size:15px;line-height:1.5;color:var(--ink)}
+  .pw i{display:block;width:22px;height:22px;border-radius:7px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:12px;line-height:22px;text-align:center}
+  .pw i.soft{background:var(--accent-soft);color:var(--accent)}
+  .loopw{margin-top:14px}
+  .lp{padding:13px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+  .lp span{display:block;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px}
+  .lp b{font-weight:500;color:var(--ink)}
+  .ar{text-align:center;color:var(--accent);font-size:17px;line-height:1.2;padding:4px 0}
+  .phr{margin-top:14px;padding:16px 18px;border-radius:16px;background:var(--accent);color:var(--accent-ink)}
+  .phr b{display:block;font-weight:600;margin-bottom:4px}
+  .lockbox{margin-top:14px;padding:18px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+  .lockbox .ln{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;margin-top:11px;line-height:1.45;font-size:15px}
+  .lockbox .ln span.bl{filter:blur(4.5px);user-select:none}
+  .lockbox .ov{margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:14px;text-align:center}
+  .aud{margin-top:14px;padding:16px;border-radius:18px;background:var(--surface-2)}
+  .aud .nmx{font-size:13px;font-weight:600;color:var(--accent)}
+  .aud .pl{display:flex;align-items:center;gap:12px;margin-top:9px}
+  .aud .pb{flex:0 0 42px;width:42px;height:42px;border-radius:50%;background:var(--accent);position:relative}
+  .aud .pb:after{content:"";position:absolute;left:16px;top:13px;border-left:13px solid var(--accent-ink);border-top:8px solid transparent;border-bottom:8px solid transparent}
+  .aud .wv{flex:1;display:flex;align-items:center;gap:3px;height:30px}
+  .aud .wv i{flex:1;max-width:4px;border-radius:2px;background:var(--accent-soft);display:block}
+  .aud .tm{font-size:13px;color:var(--ink-faint);font-weight:600}
+  .aud .vh{font-weight:700;margin-top:12px;line-height:1.35;color:var(--hl)}
+  .aud .vq{font-size:14.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45}
+  .faq{margin-top:10px;border-radius:14px;background:var(--surface);border:1px solid var(--line);padding:0 16px}
+  .faq summary{list-style:none;cursor:pointer;padding:15px 0;font-weight:600;display:flex;justify-content:space-between;gap:12px;color:var(--ink)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:after{content:"+";color:var(--accent);font-weight:700}
+  .faq[open] summary:after{content:"\\2212"}
+  .faq p{margin:0;padding:0 0 15px;color:var(--ink-soft);font-size:15px}
+  .stick{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(120%);transition:transform .25s ease}
+  .stick.on{transform:none}
+  .stick a{display:block;max-width:560px;margin:0 auto;padding:15px;border-radius:14px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:16px;text-align:center;text-decoration:none}
+  .btn2{display:block;width:100%;margin-top:12px;padding:16px;border-radius:14px;background:transparent;border:1.5px solid var(--accent);color:var(--accent);font-weight:600;font-size:16px;text-align:center;text-decoration:none;cursor:pointer}
+  .smalln{font-size:13px;color:var(--ink-faint);text-align:center;margin-top:8px}
 </style>
 </head>
 <body>
@@ -444,6 +488,22 @@
     <h3 class="subcap">С какой ступени это снимается</h3>
     <div id="rSteps"></div>
 
+    <h3 class="subcap">Что видно по вашим ответам</h3>
+    <div id="rScales"></div>
+
+    <h3 class="subcap">Что в вас сильное</h3>
+    <div id="rStrong"></div>
+    <p class="lede" style="font-size:14px;color:var(--ink-faint);margin-top:10px;">Замок этого не отменяет. Он просто пока решает за вас, на что все это тратить.</p>
+
+    <div id="rEchoWrap" style="display:none">
+      <h3 class="subcap">Почему все повторяется</h3>
+      <div class="lockbox"><div style="font-size:14px;color:var(--ink-faint)">Вы сами отметили в тесте:</div><div id="rEcho"></div></div>
+    </div>
+
+    <h3 class="subcap">Ваш привычный круг</h3>
+    <div class="loopw" id="rLoop"></div>
+    <div class="phr" id="rNew"></div>
+
     <div class="offer-box">
       <div class="ob-cap">Что с этим делать</div>
       <h3>Замок снимается с той ступени, на которой он стоит</h3>
@@ -455,6 +515,33 @@
     </div>
 
     <p class="disclaimer">Это не диагноз и не гороскоп. Это то, что вы сами про себя ответили, собранное в одну картину.</p>
+
+    <h3 class="subcap">Это была первая часть</h3>
+    <p class="lede">Вы увидели свой замок и первый шаг. Вторая часть, где Ирина разбирает, откуда он у вас взялся и как выходить, лежит в ее канале.</p>
+    <div class="lockbox" id="rLock"></div>
+
+    <h3 class="subcap">Ваша практика от Ирины</h3>
+    <div class="aud" id="rAudio"></div>
+    <p class="lede" style="font-size:14px;color:var(--ink-faint);">Это запись из канала. Ирина выкладывает практики и подкасты туда, слушать можно в дороге.</p>
+
+    <h3 class="subcap">С чего начать в канале</h3>
+    <div class="pw"><i>1</i><span><b>Заберите свою практику.</b> Она откроется сразу по кнопке ниже</span></div>
+    <div class="pw"><i>2</i><span><b>Откройте навигацию по марафону.</b> Ирина собрала все выпуски по дням, листать канал не нужно</span></div>
+    <div class="pw"><i>3</i><span><b>Напишите в комментариях, что откликнулось.</b> Ирина читает и отвечает сама</span></div>
+
+    <a class="btn" id="toChannelBtn" href="#" target="_blank" rel="noopener" style="margin-top:20px;">Забрать практику в канале →</a>
+    <div class="smalln">Бесплатно. Откроется телеграм</div>
+    <a class="btn2" id="toManagerBtn" href="#" target="_blank" rel="noopener">Написать команде Ирины</a>
+    <div class="smalln">Пишем только с аккаунта @florise_irina</div>
+
+    <h3 class="subcap">Остались вопросы</h3>
+    <details class="faq"><summary>Это бесплатно?</summary><p>Да. И практика, и все подкасты в канале бесплатные</p></details>
+    <details class="faq"><summary>Мне будут что-то продавать?</summary><p>23 ноября стартует программа «ПЕРЕХОД: НОВОЕ СОЗНАНИЕ». Кто в канале, узнает условия первым. Решать вам, практики остаются бесплатными</p></details>
+    <details class="faq"><summary>Можно задать свой вопрос?</summary><p>Да, в комментариях под постами. Ирина отвечает сама, часто голосом</p></details>
+    <details class="faq"><summary>Я уже проходила психологов и курсы</summary><p>Тогда вам знаком разрыв между «понимаю» и «делаю». Он как раз про замок, а не про недостаток знаний</p></details>
+    <details class="faq"><summary>Можно выйти, если не подойдет?</summary><p>Конечно, в любой момент, как из любого канала</p></details>
+
+    <div class="stick" id="stickBar"><a id="stickBtn" href="#" target="_blank" rel="noopener">Забрать практику в канале →</a></div>
     <button class="restart-link" id="restartFromResultBtn">Пройти тест заново</button>
   </section>
 
@@ -727,6 +814,86 @@ window.__appStart(function(){
       var s = stages[n - 1];
       return '<div class="step-pick"><div class="sp-num">' + n + '</div><div><div class="sp-name">' + s[0] + '</div><div class="sp-q">' + s[1] + '</div></div></div>';
     }).join("");
+    renderExtra();
+  }
+
+  var CHANNEL = "https://t.me/peoplenewtning";
+  var NAVPOST = "https://t.me/peoplenewtning/4566";
+  var MANAGER = "https://t.me/florise_irina";
+  var LOCKNAMES = { cennost:"Самоценность", strah:"Страх нового", scenario:"Чужой сценарий", golova:"Все в голове" };
+  var WORDS = ["слабо","умеренно","заметно","сильно"];
+  var EXTRA = {
+    cennost:{
+      sp:["Вы умеете доводить начатое до конца","На вас можно положиться","Вы видите, что нужно другому, раньше, чем он скажет"],
+      loop:["Нужно назвать свою цену или попросить о своем","«Неудобно просить столько, я же не настолько»","Соглашаюсь на меньшее или делаю бесплатно","Денег столько же, а сил меньше"],
+      nw:"«Мое время стоит столько». И не объясняю почему",
+      lock:["Откуда взялся запрет брать и чей это голос","Почему остается ровно столько, сколько вы себе разрешили","Как поднять свою цену и не оправдываться"],
+      au:{id:4531,n:"Активация себя настоящего",d:"5:38",h:"Мое священное право жить так, как я хочу",q:"Аффирмации на каждый день. Включите утром, пока собираетесь"}
+    },
+    strah:{
+      sp:["Вы осторожны и редко теряете","Вы готовитесь основательно","Вы честно признаете, когда страшно"],
+      loop:["Появляется возможность, которую вы ждали","«Сейчас не время, надо еще подготовиться»","Откладываю и ухожу в подготовку","Возможность закрывается, остается «ну и ладно»"],
+      nw:"Делаю маленький шаг сегодня, пока не передумала",
+      lock:["Почему мозг считает новое опасным и что с этим делать","Как отличить разумную осторожность от тормоза","Шаг, который психика пропускает без сопротивления"],
+      au:{id:4518,n:"Для тех, кто слушает и ничего не делает",d:"10:15",h:"Слушать всем",q:"Про стратегию, из-за которой все остается как есть"}
+    },
+    scenario:{
+      sp:["Вы чуткая к людям","Вы умеете держать слово","Вы замечаете, когда что-то не ваше"],
+      loop:["Вы хотите одно, близкие ждут другого","«Им виднее, да и неудобно»","Выбираю то, за что не осудят","Живу чужую жизнь и злюсь непонятно на кого"],
+      nw:"«Мне это не подходит». Без объяснений и без спора",
+      lock:["Чей это сценарий и когда он стал вашим","Почему удобная для всех остается чужой себе","Как выйти из него и не поссориться со всеми"],
+      au:{id:4515,n:"Культурный блок: что это и как он влияет",d:"1:13",h:"Пятая причина",q:"Про установки, которые вам передали, а вы считаете своими"}
+    },
+    golova:{
+      sp:["Вы быстро схватываете","Вы много про себя понимаете","Вы не бросаете искать ответ"],
+      loop:["Вы узнаете что-то важное про себя","«Вот теперь точно понятно, что делать»","Записываю, сохраняю, иду за следующим","Через месяц понимания больше, жизнь та же"],
+      nw:"Одно действие сегодня, даже если понимания не прибавилось",
+      lock:["Почему знание не превращается в действие","Какие подсознательные программы держат на месте","С чего начать, когда уже все перепробовано"],
+      au:{id:4536,n:"Как вырасти в доходе",d:"14:37",h:"Финансовый потолок",q:"Какие подсознательные программы блокируют деньги и в чем главный секрет роста"}
+    }
+  };
+
+  function renderExtra(){
+    var E = EXTRA[diag.lock], ks = ["cennost","strah","scenario","golova"];
+    var sc = "";
+    ks.forEach(function(k){
+      var v = diag.score[k] || 0, lv = v <= 1 ? 0 : v <= 3 ? 1 : v <= 4 ? 2 : 3, d = "";
+      for (var i = 0; i < 4; i++) d += '<i' + (i <= lv ? ' class="f"' : '') + '></i>';
+      sc += '<div class="scrow' + (k === diag.lock ? ' me' : '') + '"><div class="nm">' + LOCKNAMES[k] + '</div><div class="rt"><div class="seg">' + d + '</div><div class="wd">' + WORDS[lv] + '</div></div></div>';
+    });
+    document.getElementById("rScales").innerHTML = sc;
+    document.getElementById("rStrong").innerHTML = E.sp.map(function(t){ return '<div class="pw"><i>\u2713</i><span>' + t + '</span></div>'; }).join("");
+    var said = [];
+    questions.forEach(function(q, i){
+      if (q.k === diag.lock && (answers[i] === 0 || answers[i] === 1)) said.push(q.a[answers[i]]);
+    });
+    if (said.length >= 2){
+      document.getElementById("rEchoWrap").style.display = "";
+      document.getElementById("rEcho").innerHTML = said.slice(0,3).map(function(t){ return '<div class="ln"><i class="pwi"></i><span>' + t + '</span></div>'; }).join("").replace(/<i class="pwi"><\/i>/g, '<i style="display:block;width:22px;height:22px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:12px;line-height:22px;text-align:center">\u2713</i>');
+    }
+    var lb = ["Что происходит","Привычная мысль","Привычный ответ","Чем заканчивается"], lp = "";
+    E.loop.forEach(function(x, i){ lp += '<div class="lp"><span>' + lb[i] + '</span><b>' + x + '</b></div>' + (i < 3 ? '<div class="ar">\u2193</div>' : ''); });
+    document.getElementById("rLoop").innerHTML = lp;
+    document.getElementById("rNew").innerHTML = '<b>Новый ответ</b><span>' + E.nw + '</span>';
+    document.getElementById("rLock").innerHTML = E.lock.map(function(t, i){
+      return '<div class="ln"><i style="display:block;width:22px;height:22px;border-radius:7px;background:' + (i ? 'var(--accent-soft)' : 'var(--accent)') + ';color:' + (i ? 'var(--accent)' : 'var(--accent-ink)') + ';font-weight:700;font-size:12px;line-height:22px;text-align:center">\u2713</i><span' + (i ? ' class="bl"' : '') + '>' + t + '</span></div>';
+    }).join("") + '<div class="ov">Откроется в канале Ирины</div>';
+    var wv = ""; [8,14,22,12,26,18,10,24,16,28,12,20,9,22,14,26,10,18,24,12,16,8,20,14].forEach(function(x){ wv += '<i style="height:' + x + 'px"></i>'; });
+    document.getElementById("rAudio").innerHTML = '<div class="nmx">Ирина Гребенюкова</div><div class="pl"><div class="pb"></div><div class="wv">' + wv + '</div><div class="tm">' + E.au.d + '</div></div><div class="vh">' + E.au.h + '</div><div class="vq">' + E.au.q + '</div>';
+    var link = "https://t.me/peoplenewtning/" + E.au.id;
+    ["toChannelBtn","stickBtn"].forEach(function(id){
+      var b = document.getElementById(id); if (!b) return;
+      b.href = link;
+      b.onclick = function(e){ if (window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){ e.preventDefault(); try { Telegram.WebApp.openTelegramLink(link); } catch(x){ location.href = link; } } };
+    });
+    var m = document.getElementById("toManagerBtn");
+    if (m){ m.href = MANAGER; m.onclick = function(e){ if (window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){ e.preventDefault(); try { Telegram.WebApp.openTelegramLink(MANAGER); } catch(x){ location.href = MANAGER; } } }; }
+    var sb = document.getElementById("stickBar"), top = document.getElementById("toChannelBtn");
+    window.onscroll = function(){
+      if (!sb || !top) return;
+      var r = top.getBoundingClientRect(), vis = r.top < innerHeight && r.bottom > 0;
+      sb.className = "stick" + (window.scrollY > 700 && !vis ? " on" : "");
+    };
   }
 
 
