@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<script>(function(){var V="20261020150000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
+<script>(function(){var V="20261021173000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
 
 <meta http-equiv="Cache-Control" content="no-store">
 <meta name="description" content="Что не пускает вас в жизнь, где есть деньги, близость и свои решения? 9 вопросов, 2 минуты.">
@@ -442,6 +442,17 @@
   .stick a{display:block;max-width:560px;margin:0 auto;padding:15px;border-radius:14px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:16px;text-align:center;text-decoration:none}
   .btn2{display:block;width:100%;margin-top:12px;padding:16px;border-radius:14px;background:transparent;border:1.5px solid var(--accent);color:var(--accent);font-weight:600;font-size:16px;text-align:center;text-decoration:none;cursor:pointer}
   .smalln{font-size:13px;color:var(--ink-faint);text-align:center;margin-top:8px}
+
+  .branch{display:grid;gap:12px;margin-top:14px}
+  .brc{padding:18px;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
+  .brc .cap{font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+  .brc.a{background:var(--surface-2)}
+  .brc.a .cap{color:var(--ink-faint)}
+  .brc.b{border-color:var(--accent);box-shadow:var(--shadow)}
+  .brc.b .cap{color:var(--accent)}
+  .brc p{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .resist{margin-top:18px;padding:18px 16px;border-radius:16px;border:1px dashed var(--accent);font-size:15px;line-height:1.55;color:var(--ink)}
+  .resist b{color:var(--hl)}
 </style>
 </head>
 <body>
@@ -516,6 +527,11 @@
 
     <p class="disclaimer">Это не диагноз и не гороскоп. Это то, что вы сами про себя ответили, собранное в одну картину.</p>
 
+    <h3 class="subcap">Две ветки от сегодняшнего дня</h3>
+    <div class="branch" id="rBranch"></div>
+
+    <div class="resist" id="rResist"></div>
+
     <h3 class="subcap">Это была первая часть</h3>
     <p class="lede">Вы увидели свой замок и первый шаг. Вторая часть, где Ирина разбирает, откуда он у вас взялся и как выходить, лежит в ее канале.</p>
     <div class="lockbox" id="rLock"></div>
@@ -526,8 +542,8 @@
 
     <h3 class="subcap">С чего начать в канале</h3>
     <div class="pw"><i>1</i><span><b>Заберите свою практику.</b> Она откроется сразу по кнопке ниже</span></div>
-    <div class="pw"><i>2</i><span><b>Откройте навигацию по марафону.</b> Ирина собрала все выпуски по дням, листать канал не нужно</span></div>
-    <div class="pw"><i>3</i><span><b>Напишите в комментариях, что откликнулось.</b> Ирина читает и отвечает сама</span></div>
+    <div class="pw"><i>2</i><span><b>Напишите в комментариях, что откликнулось.</b> Ирина читает и отвечает сама</span></div>
+    <div class="pw"><i>3</i><span><b>Останьтесь в канале.</b> Там каждую неделю выходят новые разборы и практики</span></div>
 
     <a class="btn" id="toChannelBtn" href="#" target="_blank" rel="noopener" style="margin-top:20px;">Забрать практику в канале →</a>
     <div class="smalln">Бесплатно. Откроется телеграм</div>
@@ -828,29 +844,54 @@ window.__appStart(function(){
       loop:["Нужно назвать свою цену или попросить о своем","«Неудобно просить столько, я же не настолько»","Соглашаюсь на меньшее или делаю бесплатно","Денег столько же, а сил меньше"],
       nw:"«Мое время стоит столько». И не объясняю почему",
       lock:["Откуда взялся запрет брать и чей это голос","Почему остается ровно столько, сколько вы себе разрешили","Как поднять свою цену и не оправдываться"],
-      au:{id:4531,n:"Активация себя настоящего",d:"5:38",h:"Мое священное право жить так, как я хочу",q:"Аффирмации на каждый день. Включите утром, пока собираетесь"}
+      au:{id:4486,d:"8:27",h:"Постоянно откладываете себя, потому что появляется что-то поважнее?",q:"Это не характер и не обстоятельства. Это программа из детства. Ирина показывает, откуда она берется и как ее менять"}
     },
     strah:{
       sp:["Вы осторожны и редко теряете","Вы готовитесь основательно","Вы честно признаете, когда страшно"],
       loop:["Появляется возможность, которую вы ждали","«Сейчас не время, надо еще подготовиться»","Откладываю и ухожу в подготовку","Возможность закрывается, остается «ну и ладно»"],
       nw:"Делаю маленький шаг сегодня, пока не передумала",
       lock:["Почему мозг считает новое опасным и что с этим делать","Как отличить разумную осторожность от тормоза","Шаг, который психика пропускает без сопротивления"],
-      au:{id:4518,n:"Для тех, кто слушает и ничего не делает",d:"10:15",h:"Слушать всем",q:"Про стратегию, из-за которой все остается как есть"}
+      au:{id:4485,d:"6:57",h:"Мозг говорит: сиди в своем болотце, тут привычно и безопасно",q:"Что на самом деле стоит за фразой «я пока не готова» и почему идеального момента ждать бессмысленно"}
     },
     scenario:{
       sp:["Вы чуткая к людям","Вы умеете держать слово","Вы замечаете, когда что-то не ваше"],
       loop:["Вы хотите одно, близкие ждут другого","«Им виднее, да и неудобно»","Выбираю то, за что не осудят","Живу чужую жизнь и злюсь непонятно на кого"],
       nw:"«Мне это не подходит». Без объяснений и без спора",
       lock:["Чей это сценарий и когда он стал вашим","Почему удобная для всех остается чужой себе","Как выйти из него и не поссориться со всеми"],
-      au:{id:4515,n:"Культурный блок: что это и как он влияет",d:"1:13",h:"Пятая причина",q:"Про установки, которые вам передали, а вы считаете своими"}
+      au:{id:4394,d:"9:24",h:"Почему вы боитесь сказать нет",q:"Что происходит, когда «нет» через силу превращается в «нет» из самоценности. И какая скрытая выгода держит вас на месте"}
     },
     golova:{
       sp:["Вы быстро схватываете","Вы много про себя понимаете","Вы не бросаете искать ответ"],
       loop:["Вы узнаете что-то важное про себя","«Вот теперь точно понятно, что делать»","Записываю, сохраняю, иду за следующим","Через месяц понимания больше, жизнь та же"],
       nw:"Одно действие сегодня, даже если понимания не прибавилось",
       lock:["Почему знание не превращается в действие","Какие подсознательные программы держат на месте","С чего начать, когда уже все перепробовано"],
-      au:{id:4536,n:"Как вырасти в доходе",d:"14:37",h:"Финансовый потолок",q:"Какие подсознательные программы блокируют деньги и в чем главный секрет роста"}
+      au:{id:4484,d:"6:03",h:"Я столько всего проработала, а воз и ныне там",q:"Честный разговор о том, почему так происходит и что сделать, чтобы осознания наконец сработали"}
     }
+  };
+
+  var BRANCH = {
+    cennost:{
+      a:"Вы снова согласитесь на меньшее. Цену не поднимете, помощь не примете, за чужие задачи возьметесь. К следующей осени объясните это рынком и нишей.",
+      b:"Вы назовете свою цену и выдержите паузу после нее. Деньги начнут задерживаться, потому что внутри появится место, куда им приходить."
+    },
+    strah:{
+      a:"Вы отложите еще на три месяца. Потом еще. Через год вы будете стоять в этой же точке, только старше на год и с еще одним списком причин.",
+      b:"Вы сделаете шаг раньше, чем страх успеет собрать аргументы. И увидите, что земля под ногами есть, а катастрофы, которую рисовал мозг, нет."
+    },
+    scenario:{
+      a:"Вы и дальше будете выбирать то, за что не осудят. Останетесь удобной для всех и чужой себе, и будете злиться непонятно на кого.",
+      b:"Вы скажете «мне это не подходит» и не станете объяснять. Жизнь начнет собираться по вашим решениям, а не по чужим ожиданиям."
+    },
+    golova:{
+      a:"Вы пройдете еще один курс. Понимания станет больше, жизнь останется та же, и к ней добавится вина: я же все знаю, почему тогда так.",
+      b:"Вы сделаете одно действие сегодня. Не потому что окончательно поняли, а потому что сделали. С этого места и начинается другая ветка."
+    }
+  };
+  var RESIST = {
+    cennost:"Сейчас вы дочитаете и отложите. Найдется дело поважнее, потому что ваше всегда последнее в очереди. Это и есть замок в действии. Заметьте его и все равно откройте разбор.",
+    strah:"Сейчас включится «потом, сегодня не до этого». Это не усталость, это защита: мозг уводит вас от нового. Он всегда будет это делать. Шаг делается не вместо страха, а вместе с ним.",
+    scenario:"Сейчас появится мысль «это не для меня» или «что подумают». Это говорит не ваш голос. Проверьте: вы правда не хотите или просто привыкли не хотеть вслух.",
+    golova:"Сейчас вы подумаете «ну да, я это и так знала». Знали. И ничего не изменилось. Разница между теми, у кого получается, и остальными не в понимании, а в одном сделанном действии."
   };
 
   function renderExtra(){
@@ -875,6 +916,11 @@ window.__appStart(function(){
     E.loop.forEach(function(x, i){ lp += '<div class="lp"><span>' + lb[i] + '</span><b>' + x + '</b></div>' + (i < 3 ? '<div class="ar">\u2193</div>' : ''); });
     document.getElementById("rLoop").innerHTML = lp;
     document.getElementById("rNew").innerHTML = '<b>Новый ответ</b><span>' + E.nw + '</span>';
+    var br = BRANCH[diag.lock];
+    document.getElementById("rBranch").innerHTML =
+      '<div class="brc a"><div class="cap">Если ничего не трогать</div><p>' + br.a + '</p></div>' +
+      '<div class="brc b"><div class="cap">Если снять этот замок</div><p>' + br.b + '</p></div>';
+    document.getElementById("rResist").innerHTML = '<b>Что остановит вас прямо сейчас.</b> ' + RESIST[diag.lock];
     document.getElementById("rLock").innerHTML = E.lock.map(function(t, i){
       return '<div class="ln"><i style="display:block;width:22px;height:22px;border-radius:7px;background:' + (i ? 'var(--accent-soft)' : 'var(--accent)') + ';color:' + (i ? 'var(--accent)' : 'var(--accent-ink)') + ';font-weight:700;font-size:12px;line-height:22px;text-align:center">\u2713</i><span' + (i ? ' class="bl"' : '') + '>' + t + '</span></div>';
     }).join("") + '<div class="ov">Откроется в канале Ирины</div>';
