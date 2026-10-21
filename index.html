@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<script>(function(){var V="20261021173000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
+<script>(function(){var V="20261021180000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
 
 <meta http-equiv="Cache-Control" content="no-store">
 <meta name="description" content="Что не пускает вас в жизнь, где есть деньги, близость и свои решения? 9 вопросов, 2 минуты.">
@@ -453,6 +453,34 @@
   .brc p{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink)}
   .resist{margin-top:18px;padding:18px 16px;border-radius:16px;border:1px dashed var(--accent);font-size:15px;line-height:1.55;color:var(--ink)}
   .resist b{color:var(--hl)}
+
+  /* --- визуальное усиление --- */
+  .subcap{position:relative;padding-left:16px;font-size:13px;color:var(--accent)}
+  .subcap::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .result-card{background:linear-gradient(165deg,var(--surface-2),var(--surface));border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .result-card::after{content:"";position:absolute;right:-70px;top:-70px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,var(--accent-soft),transparent 70%);pointer-events:none}
+  .result-card > *{position:relative}
+  .result-title{font-size:29px;line-height:1.14}
+  .diag-level{background:var(--accent);border:0;color:var(--accent-ink);font-size:15px;padding:16px 18px;border-radius:16px}
+  .diag-level b{color:var(--accent-ink)}
+  .brc.a{background:linear-gradient(180deg,#FBF1F4,#F6E7EB);border-color:rgba(184,87,122,.3)}
+  .brc.a .cap{color:var(--rose)}
+  .brc.a p{color:#5A4450}
+  .brc.b{background:linear-gradient(160deg,#7B38B2,#56207F);border:0;color:#fff;box-shadow:0 22px 44px -26px rgba(110,47,160,.6)}
+  .brc.b .cap{color:#E3CDF8}
+  .brc.b p{color:#F6EEFC}
+  .resist{background:var(--surface);border-width:1.5px}
+  .scrow.me{background:var(--accent-soft)}
+  .lp{border-left:3px solid var(--accent-soft)}
+  .phr{box-shadow:0 18px 40px -26px rgba(110,47,160,.55)}
+  .offer-box{background:linear-gradient(170deg,var(--surface),var(--surface-2))}
+  .aud{background:linear-gradient(160deg,var(--surface-2),var(--surface));border:1px solid var(--line)}
+  .lockbox{background:linear-gradient(180deg,var(--surface),var(--surface-2))}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .brc.a{background:linear-gradient(180deg,#3A2030,#2E1927);border-color:rgba(224,140,168,.25)}
+    :root:not([data-theme="light"]) .brc.a p{color:#D9C3CE}
+    :root:not([data-theme="light"]) .brc.b{background:linear-gradient(160deg,#6A3DA6,#43246B)}
+  }
 </style>
 </head>
 <body>
