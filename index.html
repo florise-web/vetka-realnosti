@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<script>(function(){var V="20261022100000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
+<script>(function(){var V="20261021140000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
 
 <meta http-equiv="Cache-Control" content="no-store">
 <meta name="description" content="Что не пускает вас в жизнь, где есть деньги, близость и свои решения? 9 вопросов, 2 минуты.">
@@ -601,7 +601,7 @@
       <div class="ot"><i></i><span>Все остается в записи</span></div>
       <p class="onf">Не подойдет, если вы ищете терапию или ждете, что изменится кто-то другой. Семь ступеней работают только на вас.</p>
       <a class="btn" href="https://t.me/florise_irina" target="_blank" rel="noopener">Узнать про «Переход»</a>
-      <div class="smalln">Ответит команда Ирины, аккаунт @florise_irina</div>
+      <div class="smalln">Сообщение уже готово, останется вставить и отправить</div>
     </div>
 
     <h3 class="subcap">Остались вопросы</h3>
@@ -890,6 +890,12 @@ window.__appStart(function(){
   var CHANNEL = "https://t.me/peoplenewtning";
   var NAVPOST = "https://t.me/peoplenewtning/4566";
   var MANAGER = "https://t.me/florise_irina";
+  var MSG = "Хочу узнать подробнее про программу ПЕРЕХОД: НОВОЕ СОЗНАНИЕ";
+  function goMgr(e){ if (e && e.preventDefault) e.preventDefault(); try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(MSG); } catch(x){} if (window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){ try { Telegram.WebApp.openTelegramLink(MANAGER); return false; } catch(x){} } location.href = MANAGER; return false; }
+  var STATS_URL = "https://script.google.com/macros/s/AKfycbwZNJxbmarbbimY87ydj2x7skVhUzYzqEWvVVOayOgqK8VfXeIUbkqqZsJRnyqN5cWu9g/exec";
+  function suid(){ var w = window.Telegram && Telegram.WebApp; var u = w && w.initDataUnsafe && w.initDataUnsafe.user; if (u) return "tg" + u.id; var k; try { k = localStorage.getItem("fl_uid"); if (!k){ k = "w" + Math.random().toString(36).slice(2,10); localStorage.setItem("fl_uid", k); } } catch(e){ k = "w?"; } return k; }
+  var statSent = false;
+  function sendStat(test, result, detail){ if (!STATS_URL || statSent) return; statSent = true; try { var w = window.Telegram && Telegram.WebApp; var u = (w && w.initDataUnsafe && w.initDataUnsafe.user) || {}; var p = { tab:"Тесты", name:(u.first_name||"") + (u.last_name ? " " + u.last_name : ""), telegram: u.username ? "@" + u.username : "", request:"тест=" + test + "; результат=" + result + "; " + (detail||"") + "; uid=" + suid() + "; источник=" + (u.id ? "бот" : "сайт"), consent:"тест" }; var q = Object.keys(p).map(function(k){ return k + "=" + encodeURIComponent(p[k]); }).join("&"); fetch(STATS_URL + "?" + q, { mode:"no-cors" }).catch(function(){}); } catch(e){} }
   var LOCKNAMES = { cennost:"Самоценность", strah:"Страх нового", scenario:"Чужой сценарий", golova:"Все в голове" };
   var WORDS = ["слабо","умеренно","заметно","сильно"];
   var EXTRA = {
@@ -987,7 +993,9 @@ window.__appStart(function(){
       b.onclick = function(e){ if (window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){ e.preventDefault(); try { Telegram.WebApp.openTelegramLink(link); } catch(x){ location.href = link; } } };
     });
     var m = document.getElementById("toManagerBtn");
-    if (m){ m.href = MANAGER; m.onclick = function(e){ if (window.Telegram && Telegram.WebApp && Telegram.WebApp.openTelegramLink){ e.preventDefault(); try { Telegram.WebApp.openTelegramLink(MANAGER); } catch(x){ location.href = MANAGER; } } }; }
+    if (m){ m.href = MANAGER; m.onclick = goMgr; }
+    Array.prototype.forEach.call(document.querySelectorAll('a[href*="florise_irina"]'), function(a){ a.onclick = goMgr; });
+    sendStat("Ветка реальности", LOCKNAMES[diag.lock] || diag.lock, "шкалы " + ["cennost","strah","scenario","golova"].map(function(k){ return LOCKNAMES[k] + ":" + (diag.score[k]||0); }).join(", "));
     var sb = document.getElementById("stickBar"), top = document.getElementById("toChannelBtn");
     window.onscroll = function(){
       if (!sb || !top) return;
