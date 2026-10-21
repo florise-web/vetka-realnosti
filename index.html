@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<script>(function(){var V="20261021180000";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
+<script>(function(){var V="20261022091500";function chk(){try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!t||t===V)return;var k="fr_"+t;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,1)}catch(e){}var u=new URL(location.href);u.searchParams.set("v",t);location.replace(u.toString())}).catch(function(){})}catch(e){}}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()});window.addEventListener("pageshow",function(e){if(e.persisted)chk()})})();</script><!--/fresh-->
 
 <meta http-equiv="Cache-Control" content="no-store">
 <meta name="description" content="Что не пускает вас в жизнь, где есть деньги, близость и свои решения? 9 вопросов, 2 минуты.">
@@ -386,7 +386,7 @@
   .numlist .nt b{color:var(--hl)}
   .ticklist{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:10px}
   .ticklist li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.55;color:var(--ink)}
-  .ticklist li::before{content:"\\2713";display:block;width:22px;height:22px;border-radius:7px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:12px;line-height:22px;text-align:center}
+  .ticklist li::before{content:"✓";display:block;width:22px;height:22px;border-radius:7px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:12px;line-height:22px;text-align:center}
   .notfor{margin-top:12px;padding:16px;border-radius:16px;background:var(--surface-2)}
   .notfor p{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
   .notfor p:last-child{margin:0}
@@ -435,7 +435,7 @@
   .faq summary{list-style:none;cursor:pointer;padding:15px 0;font-weight:600;display:flex;justify-content:space-between;gap:12px;color:var(--ink)}
   .faq summary::-webkit-details-marker{display:none}
   .faq summary:after{content:"+";color:var(--accent);font-weight:700}
-  .faq[open] summary:after{content:"\\2212"}
+  .faq[open] summary:after{content:"−"}
   .faq p{margin:0;padding:0 0 15px;color:var(--ink-soft);font-size:15px}
   .stick{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);transform:translateY(120%);transition:transform .25s ease}
   .stick.on{transform:none}
@@ -481,6 +481,15 @@
     :root:not([data-theme="light"]) .brc.a p{color:#D9C3CE}
     :root:not([data-theme="light"]) .brc.b{background:linear-gradient(160deg,#6A3DA6,#43246B)}
   }
+
+  .offer{margin-top:30px;padding:26px 22px;border-radius:22px;background:linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--accent);box-shadow:var(--shadow)}
+  .offer .ob{font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .offer h3{margin:0 0 10px;font-family:"Fraunces",serif;font-size:25px;line-height:1.16;color:var(--hl);font-weight:600}
+  .offer .ol{margin:0 0 14px;font-size:15.5px;line-height:1.6;color:var(--ink-soft)}
+  .offer .ot{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;margin-top:10px;font-size:15px;line-height:1.5;color:var(--ink)}
+  .offer .ot i{display:block;width:20px;height:20px;border-radius:6px;background:var(--accent);position:relative;margin-top:2px}
+  .offer .ot i:after{content:"";position:absolute;left:7px;top:4px;width:4px;height:9px;border:solid var(--accent-ink);border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .offer .onf{margin-top:14px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);font-size:14px;line-height:1.5;color:var(--ink-soft)}
 </style>
 </head>
 <body>
@@ -577,6 +586,19 @@
     <div class="smalln">Бесплатно. Откроется телеграм</div>
     <a class="btn2" id="toManagerBtn" href="#" target="_blank" rel="noopener">Написать команде Ирины</a>
     <div class="smalln">Пишем только с аккаунта @florise_irina</div>
+
+    <div class="offer">
+      <div class="ob">старт 23 ноября · 7 ступеней · онлайн</div>
+      <h3>ПЕРЕХОД: НОВОЕ СОЗНАНИЕ</h3>
+      <p class="ol">Программа для тех, кто готов оказаться в своей лучшей ветке реальности. Работаем на всех уровнях: с мыслями, эмоциями и телом, чтобы каждый шаг давался легче и вел вас дальше.</p>
+      <div class="ot"><i></i><span>Семь ступеней, по одной за раз, а не все сразу</span></div>
+      <div class="ot"><i></i><span>Живые эфиры онлайн 14 и 21 день, а не записи</span></div>
+      <div class="ot"><i></i><span>Ирина отвечает лично на вашу ситуацию</span></div>
+      <div class="ot"><i></i><span>Все остается в записи</span></div>
+      <p class="onf">Не подойдет, если вы ищете терапию или ждете, что изменится кто-то другой. Семь ступеней работают только на вас.</p>
+      <a class="btn" href="https://t.me/florise_irina" target="_blank" rel="noopener">Узнать про «Переход»</a>
+      <div class="smalln">Ответит команда Ирины, аккаунт @florise_irina</div>
+    </div>
 
     <h3 class="subcap">Остались вопросы</h3>
     <details class="faq"><summary>Это бесплатно?</summary><p>Да. И практика, и все подкасты в канале бесплатные</p></details>
